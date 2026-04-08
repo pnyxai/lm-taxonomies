@@ -1,11 +1,8 @@
-import json
 import networkx as nx
-import matplotlib.pyplot as plt
-import sys
 import os
-import pandas as pd
 
 import argparse
+
 
 def main():
     from taxonomy_tools import helm_data as txm_helm_data
@@ -58,10 +55,8 @@ def main():
         "--------------------------------------------------------------------------------"
     )
     print("Reading taxonomy graph:")
-    taxonomy_graph, _, _, _ = (
-        txm_utils.load_taxonomy(
-            TAXONOMY_PATH, return_all=True, verbose=True, print_prefix="\t"
-        )
+    taxonomy_graph, _, _, _ = txm_utils.load_taxonomy(
+        TAXONOMY_PATH, return_all=True, verbose=True, print_prefix="\t"
     )
 
     # Get all the required datasets from the taxonomy graph
@@ -91,7 +86,9 @@ def main():
     print("Processing Models:")
     all_graphs = list()
     for target_model in MODELS_USE:
-        model_graph = txm_utils.get_model_graph(taxonomy_graph, helm_samples_dict, target_model)
+        model_graph = txm_utils.get_model_graph(
+            taxonomy_graph, helm_samples_dict, target_model
+        )
         print(f"\t{model_graph.name}")
         all_graphs.append(model_graph)
 
@@ -101,12 +98,11 @@ def main():
     print("Saving to disk...")
     try:
         for graph_out in all_graphs:
-            nx.drawing.nx_agraph.write_dot(graph_out, os.path.join(OUTPUT_PATH, graph_out.name+".txt"))
+            nx.drawing.nx_agraph.write_dot(
+                graph_out, os.path.join(OUTPUT_PATH, graph_out.name + ".txt")
+            )
     except Exception as e:
         print(f"Unable to save graphs: {str(e)}")
-        
-
-
 
 
 # Run the main function if the script is executed directly

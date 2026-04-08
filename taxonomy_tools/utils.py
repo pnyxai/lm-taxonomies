@@ -125,7 +125,7 @@ def load_taxonomy(
         node = node_path[-1]
         for edge in taxonomy_graph.in_edges(node):
             if node != edge[1]:
-                # We dont care on outgoing edges from the analyzed node.
+                # We don't care on outgoing edges from the analyzed node.
                 continue
             else:
                 # Get list of datasets used here
@@ -169,9 +169,7 @@ def get_taxonomy_datasets_per_node(taxonomy_graph: nx.classes.digraph.DiGraph) -
     return dataset_correspondency
 
 
-def get_taxonomy_datasets(
-    taxonomy_graph: nx.classes.digraph.DiGraph, allow_duplicates=True
-) -> List:
+def get_taxonomy_datasets(taxonomy_graph: nx.classes.digraph.DiGraph) -> List:
     """
     Gets a list of unique datasets to be used in the given taxonomy.
     """
@@ -183,8 +181,6 @@ def get_taxonomy_datasets(
         for dataset in val:
             if dataset not in datasets_list:
                 datasets_list.append(dataset)
-            elif not allow_duplicates:
-                raise ValueError(f"Duplicated dataset found: {dataset}")
 
     return datasets_list
 

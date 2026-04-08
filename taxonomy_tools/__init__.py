@@ -2,9 +2,9 @@
 
 __version__ = "0.1.0"
 
-from .helm_data import *
-from .metrics import *
-from .utils import *
+from . import helm_data
+from . import metrics
+from . import utils
 
 __all__ = [
     "helm_data",

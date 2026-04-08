@@ -32,14 +32,9 @@ Configuration files are stored in `taxonomy_tools/config/`.
 
 Scripts that use the package are in the `scripts/` directory:
 
-- **taxonomy_analyzer**: Tools for analyzing and testing taxonomies
-- **model_profiler**: Model profiling utilities
+- [**taxonomy_analyzer**](./scripts/taxonomy_analyzer/README.md): Tools for analyzing and testing taxonomies
+- [**model_profiler**](./scripts/model_profiler/README.md): Model profiling utilities
 
-To run a script, execute it directly:
-
-```bash
-python scripts/taxonomy_analyzer/compile_custom_dataset.py
-```
 
 ## Development
 
