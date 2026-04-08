@@ -1145,7 +1145,7 @@
             "split": "test"
         }
     ],
-    "bbh_subtask_movie_movie_recommendation": [
+    "bbh_subtask_movie_recommendation": [
         {
             "suffix": "---",
             "name": "bbh_subtask:compilation=movie_recommendation",

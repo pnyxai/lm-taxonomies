@@ -224,4 +224,81 @@ def split_helm_result_folder_name(folder_name):
     split_data["model"] = folder_name.split(",model=")[-1].split(",")[0]
     if "task" in folder_name:
         split_data["task"] = folder_name.split(":task=")[-1].split(",")[0]
+    if "compilation" in folder_name:
+        split_data["compilation"] = folder_name.split(":compilation=")[-1].split(",")[0]
+    if "method" in folder_name:
+        split_data["method"] = folder_name.split(",method=")[-1].split(",")[0]
     return split_data
+
+
+def retrieve_helm_model_result_on_prompt_by_id(prompt_id, dataset, metric_name, model, path_to_resuls, compilation=None, method=None):
+    
+    # Build test name
+    folder_name = dataset
+    if compilation is not None:
+        folder_name += f':compilation={compilation}'
+    if method is not None:
+        folder_name += f',method={method}'
+    folder_name += f",model={model}"
+
+    # Get data
+    with open(os.path.join(path_to_resuls, folder_name, "per_instance_stats.json"), "rt") as file:
+        per_instance_stats = json.load(file)
+
+    # Find prompt
+    for entry in per_instance_stats:
+        if str(entry['instance_id']) == prompt_id:
+            for metric in entry['stats']:
+                if metric['name']['name'] == metric_name:
+                    return metric['mean']
+                    
+    return None
+
+def retrieve_helm_prompt_by_id(prompt_id, dataset, model, path_to_resuls, compilation=None, method=None):
+    
+    # Build test name
+    folder_name = dataset
+    if compilation is not None:
+        folder_name += f':compilation={compilation}'
+    if method is not None:
+        folder_name += f',method={method}'
+    folder_name += f",model={model}"
+
+    # Get data
+    with open(os.path.join(path_to_resuls, folder_name, "instances.json"), "rt") as file:
+        instances = json.load(file)
+
+    # Find prompt
+    for entry in instances:
+        if str(entry['id']) == prompt_id:
+            return entry['input']['text']
+                    
+    return None
+
+         
+def get_all_test_prompts_by_id(path_to_resuls):
+
+    samples = dict()
+    for folder in os.listdir(path_to_resuls):
+        folder_data = split_helm_result_folder_name(folder)
+        if folder_data['dataset'] not in samples.keys():
+            samples[folder_data['dataset']] = dict()
+        posfix = '---'
+        if folder_data.get('compilation', None) is not None:
+            posfix = f":compilation={folder_data['compilation']}"
+        if folder_data.get('method', None) is not None:
+            if posfix != '---':
+                posfix += f",method={folder_data['method']}"
+            else:
+                posfix = f",method={folder_data['method']}"
+            
+        if posfix not in samples[folder_data['dataset']].keys():
+            samples[folder_data['dataset']][posfix] = list()
+        
+            # Open instances file
+            with open(os.path.join(path_to_resuls, folder, "instances.json"), "rt") as file:
+                instances = json.load(file)
+            for instance in instances:
+                samples[folder_data['dataset']][posfix].append(instance['id'])
+
+    return samples

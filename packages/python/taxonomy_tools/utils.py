@@ -170,7 +170,7 @@ def get_taxonomy_datasets_per_node(taxonomy_graph: nx.classes.digraph.DiGraph) -
     return dataset_correspondency
 
 
-def get_taxonomy_datasets(taxonomy_graph: nx.classes.digraph.DiGraph) -> List:
+def get_taxonomy_datasets(taxonomy_graph: nx.classes.digraph.DiGraph, allow_duplicates=True) -> List:
     """
     Gets a list of unique datasets to be used in the given taxonomy.
     """
@@ -182,6 +182,8 @@ def get_taxonomy_datasets(taxonomy_graph: nx.classes.digraph.DiGraph) -> List:
         for dataset in val:
             if dataset not in datasets_list:
                 datasets_list.append(dataset)
+            elif not allow_duplicates:
+                raise ValueError(f"Duplicated dataset found: {dataset}")
 
     return datasets_list
 
@@ -531,3 +533,43 @@ def get_taxonomy_per_edge_metric(
         )
 
     return metrics_matrix_imbalanced, graph_json
+
+
+def get_model_graph(taxonomy_graph, samples_dict, target_model):
+    """
+    Given a taxonomy graph and the nodes data, extract the scores for each node
+    for the requested model.
+    """
+    model_graph = nx.DiGraph(name=f"{taxonomy_graph.name}_{target_model}")
+    for edge in taxonomy_graph.edges:
+        model_graph.add_edge(edge[0], edge[1])
+
+    attributes = dict()
+    for node in model_graph.nodes:
+        scores = list()
+        if node == 'root_c':
+            continue
+        all_datasets = list(taxonomy_graph.nodes[node]['datasets'])
+        all_datasets.sort()
+        for dataset in all_datasets:
+            # Get this dataset
+            this_dataset = samples_dict.get(dataset, None)
+            if this_dataset is not None:
+                # Keep only the selected model
+                this_score = this_dataset.get(target_model, None)
+                if this_score is not None:
+                    scores.append(this_score)
+        attributes[node] = {
+                'names': all_datasets,
+                'values': scores,
+            'median' : np.median(scores),
+            'avg' : np.mean(scores),
+            'max' : np.max(scores),
+            'min' : np.min(scores)
+            }
+    
+
+    nx.set_node_attributes(model_graph, attributes, "scores")
+
+    return model_graph
+
