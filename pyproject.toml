@@ -1,2 +1,31 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "taxonomy_tools"
+version = "0.1.0"
+description = "Tools for working with LM taxonomies and model profiling"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "matplotlib>=3.10.8",
+    "networkx>=3.6.1",
+    "numpy>=2.4.4",
+    "pandas>=3.0.2",
+    "pygraphviz>=1.14",
+    "scikit-learn>=1.8.0",
+    "tqdm>=4.67.3",
+]
+
+[project.optional-dependencies]
+dev = ["ipykernel"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["taxonomy_tools"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"taxonomy_tools/config" = "taxonomy_tools/config"
+
 [tool.ruff]
-include = ["apps/python/**/*.py", "packages/python/**/*.py"]
+include = ["taxonomy_tools/**/*.py", "scripts/**/*.py"]

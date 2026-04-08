@@ -58,7 +58,7 @@ def node_pair_mutual_info_regression(a: np.array, b: np.array) -> float:
     a, b = remove_nans(a, b)
     a = a.reshape(-1, 1)
     if np.sum(a) == 0 or np.sum(b) == 0:
-        return np.NaN
+        return np.nan
     return mutual_info_regression(a, b)[0]
 
 

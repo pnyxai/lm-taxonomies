@@ -10,11 +10,10 @@ from scipy.stats import spearmanr, kendalltau
 from . import metrics as txm_metrics
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
-root_dir = os.path.normpath(os.path.join(current_dir, os.pardir, os.pardir, os.pardir))
 
 # This config file contains data for each of the models that HELM tested (and potentially more)
 models_config_path = os.environ.get(
-    "MODELS_CONFIG_PATH", os.path.join(root_dir, "config", "models.json")
+    "MODELS_CONFIG_PATH", os.path.join(current_dir, "config", "models.json")
 )
 with open(models_config_path) as f:
     models_config = json.load(f)
@@ -170,7 +169,9 @@ def get_taxonomy_datasets_per_node(taxonomy_graph: nx.classes.digraph.DiGraph) -
     return dataset_correspondency
 
 
-def get_taxonomy_datasets(taxonomy_graph: nx.classes.digraph.DiGraph, allow_duplicates=True) -> List:
+def get_taxonomy_datasets(
+    taxonomy_graph: nx.classes.digraph.DiGraph, allow_duplicates=True
+) -> List:
     """
     Gets a list of unique datasets to be used in the given taxonomy.
     """
@@ -517,7 +518,7 @@ def get_taxonomy_per_edge_metric(
             else:
                 raise ValueError("Unknown method for metric : %s" % method)
         else:
-            metrics_matrix_imbalanced[x, y] = np.NaN
+            metrics_matrix_imbalanced[x, y] = np.nan
 
     # Create a dictionary with metrics over the taxonomy
     graph_json = dict()
@@ -547,9 +548,9 @@ def get_model_graph(taxonomy_graph, samples_dict, target_model):
     attributes = dict()
     for node in model_graph.nodes:
         scores = list()
-        if node == 'root_c':
+        if node == "root_c":
             continue
-        all_datasets = list(taxonomy_graph.nodes[node]['datasets'])
+        all_datasets = list(taxonomy_graph.nodes[node]["datasets"])
         all_datasets.sort()
         for dataset in all_datasets:
             # Get this dataset
@@ -559,17 +560,17 @@ def get_model_graph(taxonomy_graph, samples_dict, target_model):
                 this_score = this_dataset.get(target_model, None)
                 if this_score is not None:
                     scores.append(this_score)
+        if len(scores) == 0:
+            scores = [np.nan]
         attributes[node] = {
-                'names': all_datasets,
-                'values': scores,
-            'median' : np.median(scores),
-            'avg' : np.mean(scores),
-            'max' : np.max(scores),
-            'min' : np.min(scores)
-            }
-    
+            "names": all_datasets,
+            "values": scores,
+            "median": np.median(scores),
+            "avg": np.mean(scores),
+            "max": np.max(scores),
+            "min": np.min(scores),
+        }
 
     nx.set_node_attributes(model_graph, attributes, "scores")
 
     return model_graph
-

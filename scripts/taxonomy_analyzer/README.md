@@ -11,7 +11,7 @@ This script is used to analyze a given taxonomy. The inputs are:
 
 Example execution:
 ```bash
-python taxonomy_analyzer/test_taxonomy.py --taxonomy /bar/foo/taxonomy_001.txt --data /bar/foo/helm/benchmark_output/runs/v0.3.0 --output /bar/foo/outputs --metrics kendall,mutual_information 
+python scripts/taxonomy_analyzer/test_taxonomy.py --taxonomy /bar/foo/taxonomy_001.txt --data /bar/foo/helm/benchmark_output/runs/v0.3.0 --output /bar/foo/outputs --metrics kendall,mutual_information 
 ```
 
 Note that the argument `--data` can be repeated multiple times to look for results in multiple folders, like this
@@ -78,7 +78,7 @@ This `json` file contains the instruction to create a new run called `my_new_com
 
 To create the compilation just execute:
 ```bash
-python taxonomy_analyzer/compile_custom_dataset.py --compilation /bar/foo/compilation_spec.json --data /bar/foo/helm/benchmark_output/runs/v0.4.0-instances --output /bar/foo/outputs/test_compilations
+python scripts/taxonomy_analyzer/compile_custom_dataset.py --compilation /bar/foo/compilation_spec.json --data /bar/foo/helm/benchmark_output/runs/v0.4.0-instances --output /bar/foo/outputs/test_compilations
 ```
 
 The `data` folder should contain all the instances data, this means, the `per_instance_stats.json` files.

@@ -1,26 +1,56 @@
-# pnyx-lm-taxonomies
+# taxonomy_tools
 
+Tools for working with language model taxonomies and model profiling.
 
-### Local Python Dev
+## Installation
 
-To run the python scripts locally (like the taxonomy analysis app) the following steps are recommended:
+Install the package with `uv`:
 
-Install pip and venv:
 ```bash
-sudo apt install pip python3-venv -y
+uv sync
 ```
 
-Create a virtual environment in this project:
-```bash
-python3 -m .venv venv-base
+This installs the `taxonomy_tools` package and all dependencies.
+
+## Usage
+
+### Import the Package
+
+```python
+from taxonomy_tools import helm_data, metrics, utils
 ```
 
-Activate the new environment
+### Available Modules
+
+- **helm_data**: Functions for working with HELM benchmark data
+- **metrics**: Calculation and analysis of taxonomy metrics
+- **utils**: Utility functions for taxonomy manipulation and analysis
+
+Configuration files are stored in `taxonomy_tools/config/`.
+
+## Scripts
+
+Scripts that use the package are in the `scripts/` directory:
+
+- **taxonomy_analyzer**: Tools for analyzing and testing taxonomies
+- **model_profiler**: Model profiling utilities
+
+To run a script, execute it directly:
+
 ```bash
-source .venv/bin/activate
+python scripts/taxonomy_analyzer/compile_custom_dataset.py
 ```
 
-Install the required packages:
+## Development
+
+Install dev dependencies:
+
 ```bash
-pip install -r requirements.txt
+uv sync --all-extras
 ```
+
+This includes `ipykernel` for Jupyter notebook support.
+
+## Requirements
+
+- Python 3.13+

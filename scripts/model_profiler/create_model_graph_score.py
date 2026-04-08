@@ -7,11 +7,6 @@ import pandas as pd
 
 import argparse
 
-current_dir = os.path.dirname(os.path.abspath(__file__))
-root_dir = os.path.normpath(os.path.join(current_dir, os.pardir, os.pardir, os.pardir))
-sys.path.insert(0, os.path.join(root_dir, "packages", "python"))
-
-
 def main():
     from taxonomy_tools import helm_data as txm_helm_data
     from taxonomy_tools import utils as txm_utils
@@ -104,8 +99,11 @@ def main():
         "--------------------------------------------------------------------------------"
     )
     print("Saving to disk...")
-    for graph_out in all_graphs:
-        nx.drawing.nx_agraph.write_dot(graph_out, os.path.join(OUTPUT_PATH, graph_out.name+".txt"))
+    try:
+        for graph_out in all_graphs:
+            nx.drawing.nx_agraph.write_dot(graph_out, os.path.join(OUTPUT_PATH, graph_out.name+".txt"))
+    except Exception as e:
+        print(f"Unable to save graphs: {str(e)}")
         
 
 
