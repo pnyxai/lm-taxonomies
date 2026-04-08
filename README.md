@@ -1,6 +1,7 @@
-# taxonomy_tools
+# PNYX Taxonomy Tools Package
 
-Tools for working with language model taxonomies and model profiling.
+This repository contains a set of tools and scripts for working with language model skills taxonomies.
+The skills taxonomies are a way of presenting language model's linguistic and cognitive skills in a readable and hierarchical way that reveals more than the sum of the benchmarks that compose them.
 
 ## Installation
 
@@ -49,3 +50,7 @@ This includes `ipykernel` for Jupyter notebook support.
 ## Requirements
 
 - Python 3.13+
+
+## Sample Taxonomies
+
+Several taxonomies are included for reference, Please refer to the section [README](./taxonomies/README.md).

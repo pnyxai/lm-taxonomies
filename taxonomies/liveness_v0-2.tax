@@ -1,0 +1,11 @@
+// This is a simple taxonomy that should tell us if a black box has bare minimum
+// language capabilities
+
+liveness_v0 {
+    root_c -> liveness;
+}
+
+liveness_v0_labeling {
+    liveness -> babisteps-chat_zero_shot-task_01-simpletracking;
+    liveness -> babisteps-chat_zero_shot-task_02-immediateorder;
+}

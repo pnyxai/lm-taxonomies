@@ -1,0 +1,127 @@
+// This taxonomy covers foundational and domain-specific knowledge
+// It is organized into three main branches: Life Sciences, Physical Sciences,
+// and Computing. Basic knowledge nodes are shared across branches.
+
+foundational_knowledge_v0 {
+
+    // =========================================================================
+    // FOUNDATIONAL BASE LAYER - Core shared knowledge
+    // =========================================================================
+
+    // --------(Shared base: Biology and Chemistry) ----------
+    // Core life and matter sciences, prerequisite for both life and physical science branches
+    life_sciences -> biology_and_chemistry;
+    physical_sciences -> biology_and_chemistry;
+
+    // =========================================================================
+    // BRANCH A: LIFE SCIENCES
+    // =========================================================================
+
+    // --------(Life Sciences -> Clinical and Medical Knowledge) ----------
+    // Advanced applied biology and medicine builds on life sciences
+    clinical_and_medical_knowledge -> life_sciences;
+
+    // =========================================================================
+    // BRANCH B: PHYSICAL SCIENCES
+    // =========================================================================
+
+    // --------(Physics Fundamentals -> Physical Sciences) ----------
+    // Conceptual and formal physics/chemistry underpins physical sciences
+    physical_sciences -> physics_fundamentals;
+
+    // --------(Physical Sciences -> Applied Engineering) ----------
+    // Engineering and applied disciplines build on physical sciences
+    // and also require computing fundamentals
+    applied_engineering -> physical_sciences;
+    applied_engineering -> computing_fundamentals;
+
+    // =========================================================================
+    // BRANCH C: COMPUTING
+    // =========================================================================
+
+    // --------(Advanced Computing) ----------
+    // Machine learning, security, and advanced CS build on computing fundamentals
+    advanced_computing -> computing_fundamentals;
+
+    // =========================================================================
+    // ROOT - Integrates all top-level branches
+    // =========================================================================
+    root_c -> clinical_and_medical_knowledge;
+    root_c -> applied_engineering;
+    root_c -> advanced_computing;
+}
+
+foundational_knowledge_v0_labeling {
+
+    // =========================================================================
+    // FOUNDATIONAL BASE LAYER
+    // =========================================================================   
+
+    // --------(Biology and Chemistry) ----------
+    // Foundational concepts in life science and matter/chemical composition
+    //biology_and_chemistry -> mmlu_high_school_biology_chat_generative;
+    //biology_and_chemistry -> mmlu_high_school_chemistry_chat_generative;
+    //biology_and_chemistry -> mmlu_college_biology_chat_generative;
+    //biology_and_chemistry -> mmlu_college_chemistry_chat_generative;
+    biology_and_chemistry -> mmlu_pro-category_chemistry;
+    biology_and_chemistry -> mmlu_pro-category_biology;
+
+    // --------(Physics Fundamentals) ----------
+    // Conceptual and formal physics principles
+    physics_fundamentals -> mmlu_pro-category_physics;
+    //physics_fundamentals -> mmlu_high_school_physics_chat_generative;
+    //physics_fundamentals -> mmlu_conceptual_physics_chat_generative;
+    //physics_fundamentals -> mmlu_college_physics_chat_generative;
+    //physics_fundamentals -> mmlu_astronomy_chat_generative;
+
+    // --------(Computing Fundamentals) ----------
+    // Core computer science concepts and programming
+    //computing_fundamentals -> mmlu_high_school_computer_science_chat_generative;
+    computing_fundamentals -> mmlu_college_computer_science_chat_generative;
+
+    // =========================================================================
+    // BRANCH A: LIFE SCIENCES
+    // =========================================================================
+
+    // --------(Life Sciences) ----------
+    // Virology, nutrition, aging, and integrated biological sciences
+    life_sciences -> mmlu_virology_chat_generative;
+    life_sciences -> mmlu_nutrition_chat_generative;
+    life_sciences -> mmlu_human_aging_chat_generative;
+    //life_sciences -> mmlu_medical_genetics_chat_generative;
+    life_sciences -> gpqa_subtask_main_biology;
+
+    // --------(Clinical and Medical Knowledge) ----------
+    // Applied clinical, professional, and college-level medical knowledge
+    //clinical_and_medical_knowledge -> mmlu_clinical_knowledge_chat_generative;
+    //clinical_and_medical_knowledge -> mmlu_professional_medicine_chat_generative;
+    //clinical_and_medical_knowledge -> mmlu_college_medicine_chat_generative;
+    clinical_and_medical_knowledge -> mmlu_anatomy_chat_generative;
+    clinical_and_medical_knowledge -> mmlu_pro-category_health;
+
+    // =========================================================================
+    // BRANCH B: PHYSICAL SCIENCES
+    // =========================================================================
+
+    // --------(Physical Sciences) ----------
+    // Advanced physics and chemistry, including graduate-level topics
+    physical_sciences -> gpqa_subtask_main_physics;
+    physical_sciences -> gpqa_subtask_main_chemistry;
+
+    // --------(Applied Engineering) ----------
+    // Electrical engineering and applied computer engineering
+    //applied_engineering -> mmlu_electrical_engineering_chat_generative;
+    applied_engineering -> mmlu_pro-category_engineering;
+
+
+    // =========================================================================
+    // BRANCH C: COMPUTING
+    // =========================================================================
+
+    // --------(Advanced Computing) ----------
+    // Machine learning, computer security, and advanced CS topics
+    //advanced_computing -> mmlu_machine_learning_chat_generative;
+    advanced_computing -> mmlu_computer_security_chat_generative;
+    advanced_computing -> mmlu_pro-category_computer-science;
+
+}

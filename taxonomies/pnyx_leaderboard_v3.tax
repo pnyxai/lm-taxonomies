@@ -1,0 +1,244 @@
+// This is a simple aggregation of all dataset used in other taxonomies, used to
+// generate a leaderboard-style summary.
+
+pnyx_leaderboard_v3 {
+
+    //--------------------------------------------------------------------------
+    //--------------------------------------------------------------------------
+    // Roots
+    root_c -> mmlu;
+    root_c -> bbh;
+    root_c -> ifeval;
+    root_c -> mmlu_pro;
+    root_c -> babisteps;
+    root_c -> gpqa;
+    root_c -> gsm8k;
+    root_c -> reasoning_gym;
+    root_c -> ifbench;
+    root_c -> t-eval;
+    root_c -> humaneval;
+    root_c -> apps;
+    root_c -> debugbench;
+    root_c -> ds1000;
+    root_c -> mbpp;
+    root_c -> multipl-e;
+    
+
+}
+
+pnyx_leaderboard_v3_labeling {
+
+    //--------------------------------------------------------------------------
+    // --- Reasoning GYM
+    reasoning_gym -> reasoning_gym_001-gsm_symbolic;
+    reasoning_gym -> reasoning_gym_002-polynomial_equations;
+    reasoning_gym -> reasoning_gym_003-complex_arithmetic;
+    reasoning_gym -> reasoning_gym_004-simple_integration;
+    reasoning_gym -> reasoning_gym_005-intermediate_integration;
+    reasoning_gym -> reasoning_gym_006-dice;
+    reasoning_gym -> reasoning_gym_007-codeio;
+
+    //--------------------------------------------------------------------------
+    // --- GSM8K
+    gsm8k -> gsm8k_chat;
+      
+    //--------------------------------------------------------------------------    
+    // --- GPQA
+    gpqa -> gpqa_subtask_main_physics;
+    gpqa -> gpqa_subtask_main_chemistry;
+    gpqa -> gpqa_subtask_main_biology;
+
+    //--------------------------------------------------------------------------
+    // --- IFEVAL
+    ifeval -> ifeval;
+
+    //--------------------------------------------------------------------------
+    // --- bAbI-Steps
+    babisteps -> babisteps-chat_zero_shot-task_01-simpletracking;
+    babisteps -> babisteps-chat_zero_shot-task_02-immediateorder;
+    babisteps -> babisteps-chat_zero_shot-task_03-complextracking;
+    babisteps -> babisteps-chat_zero_shot-task_04-listing;
+    babisteps -> babisteps-chat_zero_shot-task_05-sizeorder;
+    babisteps -> babisteps-chat_zero_shot-task_06-spatialorder;
+    babisteps -> babisteps-chat_zero_shot-task_07-temporalorder;
+    babisteps -> babisteps-chat_zero_shot-task_08-pathfinding;
+    babisteps -> babisteps-chat_zero_shot-task_09-temporaltracking;
+        
+
+    //--------------------------------------------------------------------------
+    // --- MMLU
+    mmlu -> mmlu_miscellaneous_chat_generative;
+    mmlu -> mmlu_conceptual_physics_chat_generative;
+    mmlu -> mmlu_prehistory_chat_generative;
+    mmlu -> mmlu_international_law_chat_generative;
+    mmlu -> mmlu_human_aging_chat_generative;
+    mmlu -> mmlu_security_studies_chat_generative;
+    mmlu -> mmlu_astronomy_chat_generative;
+    mmlu -> mmlu_logical_fallacies_chat_generative;
+    mmlu -> mmlu_high_school_computer_science_chat_generative;
+    mmlu -> mmlu_machine_learning_chat_generative;
+    mmlu -> mmlu_computer_security_chat_generative;
+    mmlu -> mmlu_college_computer_science_chat_generative;
+    mmlu -> mmlu_electrical_engineering_chat_generative;
+    mmlu -> mmlu_college_chemistry_chat_generative;
+    mmlu -> mmlu_college_physics_chat_generative;
+    mmlu -> mmlu_college_biology_chat_generative;
+    mmlu -> mmlu_college_medicine_chat_generative;
+    mmlu -> mmlu_virology_chat_generative;
+    mmlu -> mmlu_high_school_biology_chat_generative;
+    mmlu -> mmlu_high_school_chemistry_chat_generative;
+    mmlu -> mmlu_business_ethics_chat_generative;
+    mmlu -> mmlu_moral_disputes_chat_generative;
+    mmlu -> mmlu_moral_scenarios_chat_generative;
+    mmlu -> mmlu_college_mathematics_chat_generative;
+    mmlu -> mmlu_elementary_mathematics_chat_generative;
+    mmlu -> mmlu_formal_logic_chat_generative;
+    mmlu -> mmlu_abstract_algebra_chat_generative;
+    mmlu -> mmlu_high_school_geography_chat_generative;
+    mmlu -> mmlu_high_school_statistics_chat_generative;
+    mmlu -> mmlu_high_school_us_history_chat_generative;
+    mmlu -> mmlu_high_school_european_history_chat_generative;
+    mmlu -> mmlu_high_school_world_history_chat_generative;
+    mmlu -> mmlu_high_school_macroeconomics_chat_generative;
+    mmlu -> mmlu_high_school_microeconomics_chat_generative;
+    mmlu -> mmlu_high_school_psychology_chat_generative;
+    mmlu -> mmlu_high_school_mathematics_chat_generative;
+    mmlu -> mmlu_high_school_physics_chat_generative;
+    mmlu -> mmlu_anatomy_chat_generative;
+    mmlu -> mmlu_medical_genetics_chat_generative;
+    mmlu -> mmlu_human_aging_chat_generative;
+    mmlu -> mmlu_nutrition_chat_generative;
+    mmlu -> mmlu_sociology_chat_generative;
+    mmlu -> mmlu_human_sexuality_chat_generative;
+    mmlu -> mmlu_clinical_knowledge_chat_generative;
+    mmlu -> mmlu_professional_psychology_chat_generative;
+    mmlu -> mmlu_professional_medicine_chat_generative;
+    mmlu -> mmlu_public_relations_chat_generative;
+    mmlu -> mmlu_marketing_chat_generative;
+    mmlu -> mmlu_management_chat_generative;
+    mmlu -> mmlu_jurisprudence_chat_generative;
+    mmlu -> mmlu_professional_law_chat_generative;
+    mmlu -> mmlu_high_school_government_and_politics_chat_generative;
+    mmlu -> mmlu_professional_accounting_chat_generative;
+    mmlu -> mmlu_us_foreign_policy_chat_generative;
+    mmlu -> mmlu_philosophy_chat_generative;
+    mmlu -> mmlu_world_religions_chat_generative;
+    mmlu -> mmlu_global_facts_chat_generative;
+    mmlu -> mmlu_econometrics_chat_generative;
+    
+
+    //--------------------------------------------------------------------------    
+    // --- MMLU-PRO
+    mmlu_pro -> mmlu_pro-category_other;
+    mmlu_pro -> mmlu_pro-category_computer-science;
+    mmlu_pro -> mmlu_pro-category_engineering;
+    mmlu_pro -> mmlu_pro-category_biology;
+    mmlu_pro -> mmlu_pro-category_chemistry;
+    mmlu_pro -> mmlu_pro-category_physics;
+    mmlu_pro -> mmlu_pro-category_math;
+    mmlu_pro -> mmlu_pro-category_history;
+    mmlu_pro -> mmlu_pro-category_philosophy;
+    mmlu_pro -> mmlu_pro-category_economics;
+    mmlu_pro -> mmlu_pro-category_law;
+    mmlu_pro -> mmlu_pro-category_business;
+    mmlu_pro -> mmlu_pro-category_psychology;
+    mmlu_pro -> mmlu_pro-category_health;
+
+    //--------------------------------------------------------------------------    
+    // --- BBH        
+    bbh -> bbh-split_01-boolean_expressions;
+    bbh -> bbh-split_02-causal_judgement;
+    bbh -> bbh-split_03-date_understanding;
+    bbh -> bbh-split_04-disambiguation_qa;
+    bbh -> bbh-split_05-dyck_languages;
+    bbh -> bbh-split_06-formal_fallacies;
+    
+    bbh -> bbh-split_08-hyperbaton;
+    bbh -> bbh-split_09-logical_deduction_five_objects;
+    bbh -> bbh-split_10-logical_deduction_seven_objects;
+    bbh -> bbh-split_11-logical_deduction_three_objects;
+    bbh -> bbh-split_12-movie_recommendation;
+    bbh -> bbh-split_13-multistep_arithmetic_two;
+    bbh -> bbh-split_14-navigate;
+    bbh -> bbh-split_15-object_counting;
+    bbh -> bbh-split_16-penguins_in_a_table;
+    bbh -> bbh-split_17-reasoning_about_colored_objects;
+    bbh -> bbh-split_18-ruin_names;
+    bbh -> bbh-split_19-salient_translation_error_detection;
+    bbh -> bbh-split_20-snarks;
+    bbh -> bbh-split_21-sports_understanding;
+    bbh -> bbh-split_22-temporal_sequences;
+    bbh -> bbh-split_23-tracking_shuffled_objects_five_objects; 
+    bbh -> bbh-split_24-tracking_shuffled_objects_seven_objects;
+    bbh -> bbh-split_25-tracking_shuffled_objects_three_objects;
+    bbh -> bbh-split_26-web_of_lies;
+    bbh -> bbh-split_27-word_sorting;
+    
+
+    //--------------------------------------------------------------------------
+    // --- IFBENCH
+    ifbench -> ifbench;
+    ifbench -> ifbench_ifbench-constraints_single-turn;
+    ifbench -> ifbench_ifbench-constraints_multi-turn;
+    ifbench -> ifbench_ifeval-constraints_single-turn;
+    ifbench -> ifbench_ifeval-constraints_multi-turn;
+
+
+    //--------------------------------------------------------------------------
+    // --- T-EVAL
+    t-eval -> t-eval_pnyx_instruct-v2;
+    t-eval -> t-eval_pnyx_plan-json-v2;
+    t-eval -> t-eval_pnyx_plan-reason-retrieve-understand-json-v2;
+    t-eval -> t-eval_pnyx_review-str-v2;
+
+
+    //--------------------------------------------------------------------------
+    // --- HUMANEVAL
+    humaneval -> humaneval_chat_instruct;
+    humaneval -> humaneval_chat_instruct_plus;
+
+    //--------------------------------------------------------------------------
+    // --- APPS
+    apps -> apps_introductory_sandbox_chat_instruct;
+    apps -> apps_interview_sandbox_chat_instruct;
+    apps -> apps_competition_sandbox_chat_instruct;
+
+
+    //--------------------------------------------------------------------------
+    // --- DEBUGBENCH
+    debugbench -> debugbench_python_easy_sandbox_chat;
+    debugbench -> debugbench_python_medium_sandbox_chat;
+    debugbench -> debugbench_python_hard_sandbox_chat;
+
+    //--------------------------------------------------------------------------
+    // --- DS-1000
+    ds1000 -> ds1000_numpy_sandbox_chat;
+    ds1000 -> ds1000_pandas_sandbox_chat;
+    ds1000 -> ds1000_pytorch_sandbox_chat;
+    ds1000 -> ds1000_scipy_sandbox_chat;
+    ds1000 -> ds1000_sklearn_sandbox_chat;
+    ds1000 -> ds1000_tensorflow_sandbox_chat;
+
+    //--------------------------------------------------------------------------
+    // --- MBPP
+    mbpp -> mbpp_sandbox_chat_instruct;
+    mbpp -> mbpp_sandbox_chat_instruct_plus;
+
+    //--------------------------------------------------------------------------
+    // --- MULTIPL-E
+    multipl-e -> multipl-e_humaneval_cpp_chat_instruct;
+    multipl-e -> multipl-e_humaneval_go_chat_instruct;
+    multipl-e -> multipl-e_humaneval_java_chat_instruct;
+    multipl-e -> multipl-e_humaneval_node_chat_instruct;
+    multipl-e -> multipl-e_humaneval_rust_chat_instruct;
+    multipl-e -> multipl-e_mbpp_cpp_chat_instruct;
+    multipl-e -> multipl-e_mbpp_go_chat_instruct;
+    multipl-e -> multipl-e_mbpp_java_chat_instruct;
+    multipl-e -> multipl-e_mbpp_node_chat_instruct;
+    multipl-e -> multipl-e_mbpp_rust_chat_instruct;
+
+
+    //--------------------------------------------------------------------------
+
+
+}

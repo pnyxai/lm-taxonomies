@@ -1,0 +1,43 @@
+// This is a simple taxonomy that should tell us if a black box has bare minimum
+// language capabilities
+
+babisteps_v0 {
+
+    // --- SIZE, SPATIAL, TEMPORAL ORDERING
+    size_order -> immediate_order;
+    spatial_order -> immediate_order;
+    temporal_order -> immediate_order;
+
+    // --- LISTING
+    listing -> simple_tracking;
+
+    // --- COMPLEX TRACKING
+    complex_tracking -> simple_tracking;
+
+    // --- PATHFINDING
+    path_finding -> listing;
+    path_finding -> spatial_order;
+    path_finding -> temporal_order;
+
+    // --- TIMETRACKING
+    time_tracking -> temporal_order;
+    time_tracking -> complex_tracking;
+
+    // --- ROOT
+    root_c -> path_finding;
+    root_c -> size_order;
+    root_c -> time_tracking;
+}
+
+babisteps_v0_labeling {
+
+    simple_tracking -> babisteps-chat_zero_shot-task_01-simpletracking;
+    immediate_order -> babisteps-chat_zero_shot-task_02-immediateorder;
+    complex_tracking -> babisteps-chat_zero_shot-task_03-complextracking;
+    listing -> babisteps-chat_zero_shot-task_04-listing;
+    size_order -> babisteps-chat_zero_shot-task_05-sizeorder;
+    spatial_order -> babisteps-chat_zero_shot-task_06-spatialorder;
+    temporal_order -> babisteps-chat_zero_shot-task_07-temporalorder;
+    path_finding -> babisteps-chat_zero_shot-task_08-pathfinding;
+    time_tracking -> babisteps-chat_zero_shot-task_09-temporaltracking;
+}

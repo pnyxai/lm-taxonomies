@@ -1,0 +1,107 @@
+// This taxonomy covers coding and structured language skills
+// It encompasses code generation, debugging, library-level implementation,
+// and rule-heavy structured formats (e.g., regex, markup, grammar-bound languages)
+// Most benchmarks are coding-focused; structured language skills share the same foundations
+
+coding_and_structured_language_v0 {
+
+    // =========================================================================
+    // FOUNDATIONAL BASE LAYER - Core coding capabilities
+    // =========================================================================
+
+    // --------(Branch foundation: Code comprehension) ----------
+    // Ability to read, trace, and understand what code does
+    // Shared dependency across debugging, generation, and implementation
+    basic_generation -> code_comprehension;
+
+    // =========================================================================
+    // INTERMEDIATE LAYER
+    // =========================================================================
+
+    // --------(Branch A: Multi-language generation) ----------
+    // Generating correct code across multiple programming languages
+    // Depends on mastering basic generation in a primary language first
+    multilingual_generation -> basic_generation;
+
+    // --------(Branch B: Debugging) ----------
+    // Finding and fixing bugs in existing code
+    // Requires both generating correct code and understanding what code does
+    debugging -> basic_generation;
+    debugging -> code_comprehension;
+
+    // --------(Branch C: Applied implementation) ----------
+    // Using libraries, APIs, and frameworks; solving real-world coding problems
+    // Requires both generating correct code and reasoning about program behavior
+    implementation -> basic_generation;
+    implementation -> code_comprehension;
+
+    // =========================================================================
+    // ROOT - Highest level integrating all branches
+    // =========================================================================
+    root_c -> multilingual_generation;
+    root_c -> debugging;
+    root_c -> implementation;
+}
+
+coding_and_structured_language_v0_labeling {
+
+    // =========================================================================
+    // FOUNDATIONAL BASE LAYER
+    // =========================================================================
+
+    // --------(Code Comprehension) ----------
+    // Tracing execution, understanding input/output behavior of programs
+    code_comprehension -> reasoning_gym_007-codeio;
+
+    // --------(Basic Generation) ----------
+    // Generating correct Python functions from natural language descriptions
+    //basic_generation -> humaneval_chat_instruct;
+    basic_generation -> humaneval_chat_instruct_plus;
+    //basic_generation -> mbpp_sandbox_chat_instruct;
+    basic_generation -> mbpp_sandbox_chat_instruct_plus;
+
+    // =========================================================================
+    // BRANCH A: MULTI-LANGUAGE GENERATION
+    // =========================================================================
+
+    // --------(Multilingual Generation) ----------
+    // Translating problem descriptions into code across diverse languages
+    // (C++, Go, Java, JavaScript/Node, Rust) using both HumanEval and MBPP tasks
+    //multilingual_generation -> multipl-e_humaneval_cpp_chat_instruct;
+    multilingual_generation -> multipl-e_humaneval_go_chat_instruct;
+    //multilingual_generation -> multipl-e_humaneval_java_chat_instruct;
+    multilingual_generation -> multipl-e_humaneval_node_chat_instruct;
+    multilingual_generation -> multipl-e_humaneval_rust_chat_instruct;
+    //multilingual_generation -> multipl-e_mbpp_cpp_chat_instruct;
+    multilingual_generation -> multipl-e_mbpp_go_chat_instruct;
+    //multilingual_generation -> multipl-e_mbpp_java_chat_instruct;
+    multilingual_generation -> multipl-e_mbpp_node_chat_instruct;
+    multilingual_generation -> multipl-e_mbpp_rust_chat_instruct;
+
+    // =========================================================================
+    // BRANCH B: DEBUGGING
+    // =========================================================================
+
+    // --------(Debugging) ----------
+    // Identifying and correcting bugs in Python code across difficulty levels
+    //debugging -> debugbench_python_easy_sandbox_chat;
+    //debugging -> debugbench_python_medium_sandbox_chat;
+    debugging -> debugbench_python_hard_sandbox_chat;
+
+    // =========================================================================
+    // BRANCH C: APPLIED IMPLEMENTATION
+    // =========================================================================
+
+    // --------(Implementation) ----------
+    // Using scientific/ML libraries (NumPy, Pandas, PyTorch, SciPy, scikit-learn,
+    // TensorFlow) and solving competitive/interview programming problems
+    implementation -> ds1000_numpy_sandbox_chat;
+    implementation -> ds1000_pandas_sandbox_chat;
+    //implementation -> ds1000_pytorch_sandbox_chat;
+    implementation -> ds1000_scipy_sandbox_chat;
+    //implementation -> ds1000_sklearn_sandbox_chat;
+    //implementation -> ds1000_tensorflow_sandbox_chat;
+    //implementation -> apps_introductory_sandbox_chat_instruct;
+    implementation -> apps_interview_sandbox_chat_instruct;
+    //implementation -> apps_competition_sandbox_chat_instruct;
+}

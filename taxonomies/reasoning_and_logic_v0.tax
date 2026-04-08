@@ -1,0 +1,148 @@
+// This taxonomy focuses on reasoning and logic capabilities
+// It integrates the babisteps foundational skills with logical reasoning and mathematical thinking
+// The taxonomy has multiple branches that develop somewhat independently but all depend on core foundations
+
+reasoning_and_logic_v0 {
+
+    // =========================================================================
+    // FOUNDATIONAL BASE LAYER - Core reasoning capabilities
+    // =========================================================================
+    
+    // --------(Branch foundation A: Relationships and ordering) ----------
+    ordering_and_relationships -> immediate_order;
+    
+    // --------(Branch foundation B: Tracking) ----------
+    object_tracking -> simple_tracking;
+    object_tracking -> ordering_and_relationships;
+    
+    // --------(Branch foundation C: Temporal and sequences) ----------
+    temporal_reasoning -> immediate_order;
+    sequential_reasoning -> temporal_reasoning;
+    sequential_reasoning -> simple_tracking;
+    
+    // --------(Branch foundation D: Logic foundations) ----------
+    foundational_logic -> simple_tracking;
+    foundational_logic -> immediate_order;
+    
+    // =========================================================================
+    // ADVANCED REASONING BRANCHES
+    // =========================================================================
+    
+    // --------(Advanced Logic Branch) ----------
+    formal_logic_and_deduction -> foundational_logic;
+    formal_logic_and_deduction -> ordering_and_relationships;
+    
+    // --------(Math/Arithmetic Branch) ----------
+    arithmetic_and_problem_solving -> simple_tracking;
+    
+    algebraic_reasoning -> arithmetic_and_problem_solving;
+    
+    probabilistic_reasoning -> arithmetic_and_problem_solving;
+    
+    // =========================================================================
+    // ROOT - Highest level integrating all branches
+    // =========================================================================
+    root_c -> object_tracking;
+    root_c -> sequential_reasoning;
+    root_c -> formal_logic_and_deduction;
+    root_c -> algebraic_reasoning;
+    root_c -> probabilistic_reasoning;
+}
+
+reasoning_and_logic_v0_labeling {
+
+    // =========================================================================
+    // FOUNDATIONAL BASE LAYER
+    // =========================================================================
+    
+    // --------(Task 01: Simple Tracking) ----------
+    // Basic tracking and understanding of entities and their relationships
+    simple_tracking -> babisteps-chat_zero_shot-task_01-simpletracking;
+    
+    // --------(Task 02: Immediate Order) ----------
+    // Understanding direct orderings and immediate relationships
+    immediate_order -> babisteps-chat_zero_shot-task_02-immediateorder;
+    
+    // =========================================================================
+    // BRANCH 1: OBJECT & SPATIAL REASONING
+    // =========================================================================
+    
+    // --------(Ordering and Relationships) ----------
+    // Size, spatial, and relational ordering
+    ordering_and_relationships -> babisteps-chat_zero_shot-task_05-sizeorder;
+    ordering_and_relationships -> babisteps-chat_zero_shot-task_06-spatialorder;
+    
+    // --------(Object Tracking) ----------
+    // Complex tracking, counting, and managing multiple objects
+    // Including tracking objects through permutations (shuffled objects)
+    object_tracking -> babisteps-chat_zero_shot-task_03-complextracking;
+    object_tracking -> babisteps-chat_zero_shot-task_04-listing;
+    //object_tracking -> bbh-split_15-object_counting;
+    //object_tracking -> bbh-split_25-tracking_shuffled_objects_three_objects;
+    //object_tracking -> bbh-split_23-tracking_shuffled_objects_five_objects;
+    //object_tracking -> bbh-split_24-tracking_shuffled_objects_seven_objects;
+    //object_tracking -> bbh-split_27-word_sorting;
+    
+    // =========================================================================
+    // BRANCH 2: TEMPORAL & SEQUENTIAL REASONING
+    // =========================================================================
+    
+    // --------(Temporal Reasoning) ----------
+    // Understanding temporal order and date understanding
+    temporal_reasoning -> babisteps-chat_zero_shot-task_07-temporalorder;
+    temporal_reasoning -> bbh-split_03-date_understanding;
+    
+    // --------(Sequential Reasoning) ----------
+    // Path finding, temporal tracking, and sequential logic
+    sequential_reasoning -> babisteps-chat_zero_shot-task_08-pathfinding;
+    sequential_reasoning -> babisteps-chat_zero_shot-task_09-temporaltracking;
+    //sequential_reasoning -> bbh-split_22-temporal_sequences;
+    //sequential_reasoning -> bbh-split_14-navigate;
+    //sequential_reasoning -> bbh-split_16-penguins_in_a_table;
+    
+    // =========================================================================
+    // BRANCH 3: LOGIC & FORMAL SYSTEMS
+    // =========================================================================
+    
+    // --------(Foundational Logic) ----------
+    // Basic logic, Boolean expressions, and relational reasoning
+    foundational_logic -> bbh-split_01-boolean_expressions;
+    foundational_logic -> bbh-split_02-causal_judgement;
+    //foundational_logic -> bbh-split_05-dyck_languages;
+    //foundational_logic -> bbh-split_17-reasoning_about_colored_objects;
+    
+    // --------(Formal Logic and Deduction) ----------
+    // Formal fallacies, logical deduction, and advanced logical reasoning
+    formal_logic_and_deduction -> bbh-split_06-formal_fallacies;
+    //formal_logic_and_deduction -> bbh-split_09-logical_deduction_five_objects;
+    formal_logic_and_deduction -> bbh-split_10-logical_deduction_seven_objects;
+    //formal_logic_and_deduction -> bbh-split_11-logical_deduction_three_objects;
+    //formal_logic_and_deduction -> mmlu_formal_logic_chat_generative;
+    //formal_logic_and_deduction -> mmlu_logical_fallacies_chat_generative;
+    
+    // =========================================================================
+    // BRANCH 4: MATHEMATICAL REASONING
+    // =========================================================================
+    
+    // --------(Arithmetic and Problem Solving) ----------
+    // Basic arithmetic, word problems, and computational reasoning
+    //arithmetic_and_problem_solving -> bbh-split_13-multistep_arithmetic_two;
+    //arithmetic_and_problem_solving -> gsm8k_chat;
+    //arithmetic_and_problem_solving -> mmlu_elementary_mathematics_chat_generative;
+    //arithmetic_and_problem_solving -> mmlu_high_school_mathematics_chat_generative;
+    arithmetic_and_problem_solving -> reasoning_gym_001-gsm_symbolic;
+    arithmetic_and_problem_solving -> reasoning_gym_003-complex_arithmetic;
+    
+    // --------(Algebraic Reasoning) ----------
+    // Variables, equations, polynomials, and algebraic problem solving
+    //algebraic_reasoning -> mmlu_college_mathematics_chat_generative;
+    //algebraic_reasoning -> mmlu_abstract_algebra_chat_generative;
+    algebraic_reasoning -> reasoning_gym_002-polynomial_equations;
+    //algebraic_reasoning -> mmlu_pro-category_math;
+    
+    // --------(Probabilistic Reasoning) ----------
+    // Probability, statistics, and uncertainty reasoning
+    //probabilistic_reasoning -> mmlu_high_school_statistics_chat_generative;
+    probabilistic_reasoning -> reasoning_gym_006-dice; 
+    
+}

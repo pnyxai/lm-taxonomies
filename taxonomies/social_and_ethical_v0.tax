@@ -1,0 +1,173 @@
+// This taxonomy covers social, ethical, and human interaction skills
+// It is organized into four branches: Ethics, Law & Governance, Business & Economics,
+// and Social Interaction. Basic nodes (social_awareness, moral_foundations) are shared
+// across multiple branches to reflect their cross-cutting role.
+
+social_and_ethical_v0 {
+
+    // =========================================================================
+    // FOUNDATIONAL BASE LAYER - Core shared skills
+    // =========================================================================
+
+    // --------(Shared base: Social Awareness) ----------
+    // Broad understanding of human society, behavior, and global context
+    // Prerequisite for civic, business, and social interaction branches
+    economic_reasoning -> social_awareness;
+    social_interaction -> social_awareness;
+
+    // --------(Shared base: Moral Foundations) ----------
+    // Core ethical and philosophical grounding, underpins ethics and law branches
+    applied_ethics -> moral_foundations;
+    legal_reasoning -> moral_foundations;
+
+    // =========================================================================
+    // BRANCH A: ETHICS & NORMATIVE REASONING
+    // =========================================================================
+
+    // --------(Applied Ethics -> Moral Foundations) ----------
+    // Applying ethical principles to real-world scenarios and disputes
+    // (defined in shared dependencies)
+
+    // =========================================================================
+    // BRANCH B: LAW & GOVERNANCE
+    // =========================================================================
+
+    // --------(Legal Reasoning -> Moral Foundations) ----------
+    // Understanding legal theory, jurisprudence, and professional law
+    // (defined in shared dependencies)
+
+    // --------(Professional Law and Governance -> Legal Reasoning + Social) ----------
+    // Advanced integrated knowledge of professional law and governance
+    professional_law_and_governance -> legal_reasoning;
+    professional_law_and_governance -> social_awareness;
+
+    // =========================================================================
+    // BRANCH C: BUSINESS & ECONOMICS
+    // =========================================================================
+
+    // --------(Economic Reasoning -> Social Awareness) ----------
+    // Quantitative and conceptual economics
+    // (defined in shared dependencies)
+
+    // --------(Business and Management -> Economic Reasoning) ----------
+    // Applied business, management, accounting, and marketing
+    business_and_management -> economic_reasoning;
+
+    // =========================================================================
+    // BRANCH D: SOCIAL INTERACTION & COMMUNICATION
+    // =========================================================================
+
+    // --------(Social Interaction -> Social Awareness) ----------
+    // Communication, public relations, and social/cultural understanding
+    // (defined in shared dependencies)
+
+    // --------(Social Sciences -> Social Interaction + World And Cultural Knowledge) ----------
+    // Economics, psychology foundations, and human behavior at scale
+    // Depending on history, geography, and social/cultural knowledge
+    social_sciences ->  social_interaction;
+    social_sciences -> world_and_cultural_knowledge;
+
+    // =========================================================================
+    // ROOT - Integrates all top-level branches
+    // =========================================================================
+    root_c -> applied_ethics;
+    root_c -> professional_law_and_governance;
+    root_c -> business_and_management;
+    root_c -> social_sciences;
+}
+
+social_and_ethical_v0_labeling {
+
+    // =========================================================================
+    // FOUNDATIONAL BASE LAYER
+    // =========================================================================
+
+    // --------(Social Awareness) ----------
+    // Understanding of human society, behavior, demographics, and global context
+    social_awareness -> mmlu_sociology_chat_generative;
+    social_awareness -> mmlu_human_sexuality_chat_generative;
+    social_awareness -> mmlu_global_facts_chat_generative;
+
+    // --------(World and Cultural Knowledge) ----------
+    // History, geography, and global cultural understanding
+    // Broad miscellaneous world knowledge and general facts
+    //world_and_cultural_knowledge -> mmlu_high_school_geography_chat_generative;
+    //world_and_cultural_knowledge -> mmlu_prehistory_chat_generative;
+    world_and_cultural_knowledge -> mmlu_high_school_world_history_chat_generative;
+    //world_and_cultural_knowledge -> mmlu_high_school_european_history_chat_generative;
+    //world_and_cultural_knowledge -> mmlu_high_school_us_history_chat_generative;
+    world_and_cultural_knowledge -> mmlu_pro-category_history;
+    //world_and_cultural_knowledge -> mmlu_miscellaneous_chat_generative;
+    world_and_cultural_knowledge -> mmlu_pro-category_other;
+    world_and_cultural_knowledge -> bbh-split_21-sports_understanding;
+
+
+    // --------(Moral Foundations) ----------
+    // Core philosophical and religious frameworks that underpin ethics and law
+    //moral_foundations -> mmlu_philosophy_chat_generative;
+    //moral_foundations -> mmlu_world_religions_chat_generative;
+    moral_foundations -> mmlu_pro-category_philosophy;
+
+    // =========================================================================
+    // BRANCH A: ETHICS & NORMATIVE REASONING
+    // =========================================================================
+
+    // --------(Applied Ethics) ----------
+    // Applying ethical reasoning to moral disputes, scenarios, and business contexts
+    applied_ethics -> mmlu_moral_disputes_chat_generative;
+    applied_ethics -> mmlu_moral_scenarios_chat_generative;
+    applied_ethics -> mmlu_business_ethics_chat_generative;
+
+    // =========================================================================
+    // BRANCH B: LAW & GOVERNANCE
+    // =========================================================================
+
+    // --------(Legal Reasoning) ----------
+    // Legal theory, jurisprudence, and foundational principles of law
+    //legal_reasoning -> mmlu_jurisprudence_chat_generative;
+    legal_reasoning -> mmlu_pro-category_law;
+
+    // --------(Professional Law and Governance) ----------
+    // Government systems, political institutions, and foreign policy
+    // Advanced professional law practice and governance systems
+    //professional_law_and_governance -> mmlu_high_school_government_and_politics_chat_generative;
+    //professional_law_and_governance -> mmlu_us_foreign_policy_chat_generative;
+    professional_law_and_governance -> mmlu_professional_law_chat_generative;
+    //professional_law_and_governance -> mmlu_international_law_chat_generative;
+
+    // =========================================================================
+    // BRANCH C: BUSINESS & ECONOMICS
+    // =========================================================================
+
+    // --------(Economic Reasoning) ----------
+    // Quantitative and conceptual economic analysis
+    //economic_reasoning -> mmlu_econometrics_chat_generative;
+    economic_reasoning -> mmlu_pro-category_economics;
+    //economic_reasoning -> mmlu_high_school_microeconomics_chat_generative;
+    economic_reasoning -> mmlu_high_school_macroeconomics_chat_generative;
+
+    // --------(Business and Management) ----------
+    // Applied business knowledge: management, accounting, and marketing
+    //business_and_management -> mmlu_professional_accounting_chat_generative;
+    business_and_management -> mmlu_management_chat_generative;
+    //business_and_management -> mmlu_marketing_chat_generative;
+    business_and_management -> mmlu_pro-category_business;
+
+    // =========================================================================
+    // BRANCH D: SOCIAL INTERACTION & COMMUNICATION
+    // =========================================================================
+    // =========================================================================
+
+    // --------(Social Interaction) ----------
+    // Communication, public relations, cultural preferences, and social dynamics
+    social_interaction -> mmlu_public_relations_chat_generative;
+    social_interaction -> bbh-split_12-movie_recommendation;
+    social_interaction -> bbh-split_18-ruin_names;
+
+
+    // --------(Social Sciences) ----------
+    // Psychology foundations, and human behavior at scale
+    //social_sciences -> mmlu_high_school_psychology_chat_generative;
+    social_sciences -> mmlu_pro-category_psychology;
+
+}

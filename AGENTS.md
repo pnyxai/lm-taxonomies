@@ -22,6 +22,17 @@ pnyx-lm-taxonomies/
 │   │   └── README.md
 │   └── model_profiler/     # Model profiling tools
 │       └── create_model_graph_score.py
+├── taxonomies/             # Taxonomy definition files
+│   ├── babisteps_v0-1.tax  # Foundational language capabilities
+│   ├── coding_and_structured_language_v0.tax
+│   ├── foundational_knowledge_v0.tax
+│   ├── reasoning_and_logic_v0.tax
+│   ├── social_and_ethical_v0.tax
+│   ├── tool_and_instruction_compliance_v0.tax
+│   ├── liveness_v0-2.tax
+│   ├── pnyx_categories_v2.tax
+│   ├── pnyx_leaderboard_v3.tax
+│   └── README.md           # Taxonomy format guide with examples
 ├── pyproject.toml          # Project configuration (uv managed)
 ├── README.md               # User-facing documentation
 └── AGENTS.md              # This file
@@ -153,6 +164,40 @@ Statistical metrics for analyzing relationships between taxonomy nodes.
 **Metric Categories:**
 - Methods in `permutation_methods`: Applied to all node pairs (permutations)
 - Other methods: Applied to triangular elements only (optimize computation)
+
+## Folder: taxonomies
+
+Contains taxonomy definition files (`.tax` files) that define skill hierarchies and their mappings to benchmark tasks.
+
+### Taxonomy File Format
+
+Each `.tax` file contains two graphs described in Graphviz-like syntax:
+
+1. **Hierarchy Graph** (unnamed graph block): Defines parent-child relationships between skills
+   - Edge direction: `child_skill -> parent_skill` (flows upward from basic to complex)
+   - Root node: `root_c` represents general intelligence (non-measurable)
+   - All skills form a directed acyclic graph (DAG) flowing to the root
+
+2. **Labeling Graph** (suffixed with `_labeling`): Maps skills to benchmark tasks
+   - Edge direction: `skill -> benchmark_task_name`
+   - Task names typically correspond to lm-eval tasks or HELM datasets
+   - Enables empirical evaluation of taxonomy nodes
+
+### Available Taxonomies
+
+- **`babisteps_v0-1.tax`** - Foundational language capabilities (ordering, tracking, pathfinding)
+- **`coding_and_structured_language_v0.tax`** - Code generation and structured reasoning
+- **`foundational_knowledge_v0.tax`** - General knowledge and facts
+- **`reasoning_and_logic_v0.tax`** - Logical reasoning and inference
+- **`social_and_ethical_v0.tax`** - Social understanding and ethical reasoning
+- **`tool_and_instruction_compliance_v0.tax`** - Tool use and instruction following
+- **`liveness_v0-2.tax`** - Liveness and state management capabilities
+- **`pnyx_categories_v2.tax`** - Category-based taxonomy structure
+- **`pnyx_leaderboard_v3.tax`** - Comprehensive taxonomy for the PNYX leaderboard
+
+### Documentation
+
+See `taxonomies/README.md` for detailed format guide, concrete examples using the Baby Steps taxonomy, and ASCII graph visualizations.
 
 ## Scripts
 

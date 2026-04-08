@@ -1,0 +1,99 @@
+// This taxonomy covers the ability of a model to understand and execute rules,
+// whether explicit (natural-language instructions / output constraints) or
+// implicit (tool schemas, API call conventions, structured formats).
+//
+// Two main branches:
+//   A. Instruction constraint following  — IFBench / IFEval constraints
+//   B. Tool use compliance               — T-Eval step-by-step tool utilization
+//
+// Both branches share a common base: rule_parsing (understanding what a rule
+// requires before being able to act on it).
+
+tool_and_instruction_compliance_v0 {
+
+    // =========================================================================
+    // FOUNDATIONAL BASE — shared across both branches
+    // =========================================================================
+
+    // --------(Shared foundation) ----------
+    // Ability to parse and internalize an explicit or implicit rule before acting.
+    // Everything above depends on this.
+    tool_call_formatting -> rule_parsing;
+
+    // =========================================================================
+    // BRANCH A: INSTRUCTION CONSTRAINT FOLLOWING
+    // Explicit textual constraints on model output (format, content, style).
+    // =========================================================================
+
+    // --------(Conversational constraint binding) ----------
+    // Retroactively applying a constraint introduced in a follow-up turn.
+    // Requires basic constraint following plus conversational context tracking.
+    conversational_constraint_binding -> rule_parsing;
+
+    // =========================================================================
+    // BRANCH B: TOOL USE COMPLIANCE
+    // Implicit rules defined by tool/API schemas and multi-step agent workflows.
+    // =========================================================================
+
+    // --------(Agentic tool reasoning) ----------
+    // Full agentic loop: plan → reason → retrieve → understand tool outputs.
+    // Builds on the ability to produce a correctly formatted tool call and
+    // the ability of following constraints.
+    agentic_tool_reasoning -> tool_call_formatting;
+    agentic_tool_reasoning -> conversational_constraint_binding;
+
+    // --------(Tool output verification) ----------
+    // Evaluating whether a completed tool call actually satisfied the objective.
+    // Requires understanding the tool call format to judge its correctness.
+    tool_output_verification -> tool_call_formatting;
+
+    // =========================================================================
+    // ROOT
+    // =========================================================================
+    root_c -> agentic_tool_reasoning;
+    root_c -> tool_output_verification;
+}
+
+tool_and_instruction_compliance_v0_labeling {
+
+    // =========================================================================
+    // FOUNDATIONAL BASE
+    // =========================================================================
+
+    // --------(Rule parsing) ----------
+    // Understanding what an explicit or implicit rule requires.
+    // Measured by basic single-turn instruction following with known constraints.
+    rule_parsing -> ifbench;
+    rule_parsing -> ifeval;
+    //rule_parsing -> ifbench_ifeval-constraints_single-turn;
+    //rule_parsing -> ifbench_ifbench-constraints_single-turn;
+
+    // =========================================================================
+    // BRANCH A: INSTRUCTION CONSTRAINT FOLLOWING
+    // =========================================================================  
+
+    // --------(Conversational constraint binding) ----------
+    // Producing output that correctly satisfies a stated constraint and
+    // applying a constraint that arrives in a follow-up conversational turn.
+    //conversational_constraint_binding -> ifbench_ifeval-constraints_multi-turn;
+    conversational_constraint_binding -> ifbench_ifbench-constraints_multi-turn;
+
+    // =========================================================================
+    // BRANCH B: TOOL USE COMPLIANCE
+    // =========================================================================
+
+    // --------(Tool call formatting) ----------
+    // Producing a correctly structured API call (right tool name + arguments in JSON)
+    // given a task description and tool schema.
+    tool_call_formatting -> t-eval_pnyx_instruct-v2;
+
+    // --------(Agentic tool reasoning) ----------
+    // Full intermediate-step reasoning: plan a tool-calling sequence, reason about
+    // context, retrieve the right tool, and understand its output.
+    //agentic_tool_reasoning -> t-eval_pnyx_plan-json-v2;
+    agentic_tool_reasoning -> t-eval_pnyx_plan-reason-retrieve-understand-json-v2;
+
+    // --------(Tool output verification) ----------
+    // Reviewing a completed tool call to determine whether it met the objective.
+    tool_output_verification -> t-eval_pnyx_review-str-v2;
+}
