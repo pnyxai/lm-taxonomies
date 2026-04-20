@@ -11,8 +11,8 @@ requires-python = ">=3.11"
 dependencies = [
     "matplotlib>=3.10.8",
     "networkx>=3.6.1",
-    "numpy>=2.4.4",
-    "pandas>=3.0.2",
+    "numpy>=2.2",
+    "pandas>=2.2.2",
     "pygraphviz>=1.14",
     "scikit-learn>=1.8.0",
     "tqdm>=4.67.3",
