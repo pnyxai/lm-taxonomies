@@ -15,6 +15,7 @@ sys.path.insert(0, os.path.join(root_dir, "packages", "python"))
 def main():
     from lm_taxonomies import helm_data as txm_helm_data
     from lm_taxonomies import utils as txm_utils
+    from lm_taxonomies import metrics as txm_metrics
 
     # Create an ArgumentParser object
     parser = argparse.ArgumentParser(
@@ -145,7 +146,7 @@ def main():
     for metric in METRICS_USE:
         print('Analyzing metric: "%s"' % metric)
         metric_matrix, metric_matrix_filtered, metric_dict = (
-            txm_utils.get_taxonomy_nodes_metric(
+            txm_metrics.get_taxonomy_nodes_metric(
                 nodes_data_df,
                 taxonomy_graph,
                 method=metric,

@@ -7,7 +7,7 @@ name = "lm_taxonomies"
 version = "0.1.0"
 description = "Tools for working with LM taxonomies and model profiling"
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.11"
 dependencies = [
     "matplotlib>=3.10.8",
     "networkx>=3.6.1",
