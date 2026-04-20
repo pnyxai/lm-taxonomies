@@ -24,6 +24,9 @@ dev = ["ipykernel"]
 [tool.hatch.build.targets.wheel]
 packages = ["lm_taxonomies"]
 
+[tool.setuptools.package-data]
+lm_taxonomies = ["lm_taxonomies/config/*.json"]
+
 [tool.hatch.build.targets.wheel.force-include]
 "lm_taxonomies/config" = "lm_taxonomies/config"
 
