@@ -1,0 +1,177 @@
+// This is a simple aggregation of all dataset used in other taxonomies, used to
+// generate a leaderboard-style summary.
+
+pnyx_categories_v1 {
+
+    //--------------------------------------------------------------------------
+    //--------------------------------------------------------------------------
+    // Roots
+    root_c -> reasoning_and_logic;
+    root_c -> foundational_knowledge;
+    root_c -> interpretation_and_communication;
+    root_c -> social_and_ethical;
+    root_c -> creative_and_interpersonal;
+}
+
+pnyx_categories_v1_labeling {
+
+    //--------------------------------------------------------------------------
+    // --- BBH
+    reasoning_and_logic -> bbh-split_05-dyck_languages;
+    reasoning_and_logic -> bbh-split_27-word_sorting;
+    reasoning_and_logic -> bbh-split_15-object_counting;
+    //reasoning_and_logic -> bbh-split_25-tracking_shuffled_objects_three_objects;
+    //reasoning_and_logic -> bbh-split_23-tracking_shuffled_objects_five_objects; 
+    //reasoning_and_logic -> bbh-split_24-tracking_shuffled_objects_seven_objects;
+    //reasoning_and_logic -> bbh-split_17-reasoning_about_colored_objects;
+    //reasoning_and_logic -> bbh-split_13-multistep_arithmetic_two;
+    reasoning_and_logic -> bbh-split_03-date_understanding; 
+    //reasoning_and_logic -> bbh-split_22-temporal_sequences;
+    //reasoning_and_logic -> bbh-split_14-navigate;
+    //reasoning_and_logic -> bbh-split_16-penguins_in_a_table;
+    //reasoning_and_logic -> bbh-split_11-logical_deduction_three_objects;
+    //reasoning_and_logic -> bbh-split_09-logical_deduction_five_objects;
+    reasoning_and_logic -> bbh-split_10-logical_deduction_seven_objects; 
+    reasoning_and_logic -> bbh-split_02-causal_judgement;
+    reasoning_and_logic -> bbh-split_06-formal_fallacies;
+    reasoning_and_logic -> bbh-split_01-boolean_expressions;
+    // --- MMLU
+    //reasoning_and_logic -> mmlu_college_mathematics_chat_generative;
+    //reasoning_and_logic -> mmlu_formal_logic_chat_generative; 
+    //reasoning_and_logic -> mmlu_elementary_mathematics_chat_generative; 
+    //reasoning_and_logic -> mmlu_abstract_algebra_chat_generative; 
+    reasoning_and_logic -> mmlu_logical_fallacies_chat_generative; 
+    // --- GSM8K
+    //reasoning_and_logic -> gsm8k_chat;
+    // --- MMLU-PRO
+    //reasoning_and_logic -> mmlu_pro-category_math;
+    // --- bAbI-Steps
+    reasoning_and_logic -> babisteps-chat_zero_shot-task_09-temporaltracking;
+    reasoning_and_logic -> babisteps-chat_zero_shot-task_03-complextracking;
+    reasoning_and_logic -> babisteps-chat_zero_shot-task_08-pathfinding;
+    reasoning_and_logic -> babisteps-chat_zero_shot-task_07-temporalorder;
+    reasoning_and_logic -> babisteps-chat_zero_shot-task_04-listing;
+    reasoning_and_logic -> babisteps-chat_zero_shot-task_05-sizeorder;
+    reasoning_and_logic -> babisteps-chat_zero_shot-task_06-spatialorder;
+    reasoning_and_logic -> babisteps-chat_zero_shot-task_01-simpletracking;
+    reasoning_and_logic -> babisteps-chat_zero_shot-task_02-immediateorder;    
+    // --- Reasoning-GYM
+    reasoning_and_logic -> reasoning_gym_001-gsm_symbolic;
+    reasoning_and_logic -> reasoning_gym_002-polynomial_equations;
+    reasoning_and_logic -> reasoning_gym_003-complex_arithmetic;
+    reasoning_and_logic -> reasoning_gym_006-dice;
+    
+      
+    //--------------------------------------------------------------------------    
+
+
+    //--------------------------------------------------------------------------
+    // --- MMLU
+    //foundational_knowledge -> mmlu_medical_genetics_chat_generative;
+    //foundational_knowledge -> mmlu_clinical_knowledge_chat_generative; 
+    //foundational_knowledge -> mmlu_professional_psychology_chat_generative; 
+    //foundational_knowledge -> mmlu_professional_medicine_chat_generative;
+    foundational_knowledge -> mmlu_anatomy_chat_generative; 
+    foundational_knowledge -> mmlu_human_aging_chat_generative;
+    foundational_knowledge -> mmlu_nutrition_chat_generative; 
+    //foundational_knowledge -> mmlu_high_school_geography_chat_generative;
+    //foundational_knowledge -> mmlu_high_school_microeconomics_chat_generative;
+    //foundational_knowledge -> mmlu_high_school_mathematics_chat_generative;
+    //foundational_knowledge -> mmlu_high_school_us_history_chat_generative;
+    //foundational_knowledge -> mmlu_high_school_psychology_chat_generative;
+    //foundational_knowledge -> mmlu_high_school_statistics_chat_generative;
+    //foundational_knowledge -> mmlu_high_school_european_history_chat_generative;
+    foundational_knowledge -> mmlu_high_school_world_history_chat_generative; 
+    foundational_knowledge -> mmlu_high_school_macroeconomics_chat_generative; 
+    foundational_knowledge -> mmlu_high_school_physics_chat_generative; 
+    // foundational_knowledge -> mmlu_high_school_biology_chat_generative; 
+    // foundational_knowledge -> mmlu_high_school_chemistry_chat_generative; 
+    //foundational_knowledge -> mmlu_college_physics_chat_generative;
+    //foundational_knowledge -> mmlu_college_biology_chat_generative;
+    //foundational_knowledge -> mmlu_electrical_engineering_chat_generative;
+    //foundational_knowledge -> mmlu_college_chemistry_chat_generative;
+    //foundational_knowledge -> mmlu_college_medicine_chat_generative; 
+    foundational_knowledge -> mmlu_virology_chat_generative;
+    //foundational_knowledge -> mmlu_high_school_computer_science_chat_generative;
+    //foundational_knowledge -> mmlu_machine_learning_chat_generative;
+    foundational_knowledge -> mmlu_computer_security_chat_generative; 
+    foundational_knowledge -> mmlu_college_computer_science_chat_generative; 
+    //foundational_knowledge -> mmlu_miscellaneous_chat_generative;
+    //foundational_knowledge -> mmlu_conceptual_physics_chat_generative;
+    //foundational_knowledge -> mmlu_prehistory_chat_generative; 
+    //foundational_knowledge -> mmlu_international_law_chat_generative; 
+    //foundational_knowledge -> mmlu_security_studies_chat_generative;
+    //foundational_knowledge -> mmlu_astronomy_chat_generative;
+    // --- MMLU-PRO
+    foundational_knowledge -> mmlu_pro-category_psychology;
+    foundational_knowledge -> mmlu_pro-category_health;
+    foundational_knowledge -> mmlu_pro-category_biology; 
+    foundational_knowledge -> mmlu_pro-category_chemistry;
+    foundational_knowledge -> mmlu_pro-category_physics;
+    foundational_knowledge -> mmlu_pro-category_engineering;
+    foundational_knowledge -> mmlu_pro-category_computer-science; 
+    foundational_knowledge -> mmlu_pro-category_other;
+    // --- GPQA
+    foundational_knowledge -> gpqa_subtask_main_biology;
+    foundational_knowledge -> gpqa_subtask_main_chemistry;
+    foundational_knowledge -> gpqa_subtask_main_physics;
+    // --- BBH
+    foundational_knowledge -> bbh-split_21-sports_understanding; 
+    //--------------------------------------------------------------------------    
+
+
+    //--------------------------------------------------------------------------
+    // --- IFEVAL
+    interpretation_and_communication -> ifeval
+    // --- BBH
+    interpretation_and_communication -> bbh-split_04-disambiguation_qa;
+    interpretation_and_communication -> bbh-split_08-hyperbaton;
+    interpretation_and_communication -> bbh-split_19-salient_translation_error_detection;
+    interpretation_and_communication -> bbh-split_20-snarks;
+    // interpretation_and_communication -> bbh-split_26-web_of_lies; 
+      
+    //--------------------------------------------------------------------------   
+
+
+    //--------------------------------------------------------------------------
+    // --- MMLU
+    social_and_ethical -> mmlu_sociology_chat_generative; 
+    social_and_ethical -> mmlu_human_sexuality_chat_generative; 
+    social_and_ethical -> mmlu_professional_law_chat_generative; 
+    //social_and_ethical -> mmlu_jurisprudence_chat_generative; 
+    //social_and_ethical -> mmlu_high_school_government_and_politics_chat_generative;
+    //social_and_ethical -> mmlu_professional_accounting_chat_generative; 
+    //social_and_ethical -> mmlu_us_foreign_policy_chat_generative; 
+    social_and_ethical -> mmlu_global_facts_chat_generative;
+    //social_and_ethical -> mmlu_econometrics_chat_generative;
+    //social_and_ethical -> mmlu_philosophy_chat_generative;
+    //social_and_ethical -> mmlu_world_religions_chat_generative;
+    social_and_ethical -> mmlu_business_ethics_chat_generative; 
+    social_and_ethical -> mmlu_moral_disputes_chat_generative; 
+    social_and_ethical -> mmlu_moral_scenarios_chat_generative; 
+    // --- MMLU-PRO
+    social_and_ethical -> mmlu_pro-category_history;
+    social_and_ethical -> mmlu_pro-category_philosophy;
+    //social_and_ethical -> mmlu_pro-category_economics; 
+    social_and_ethical -> mmlu_pro-category_law;
+      
+    //--------------------------------------------------------------------------   
+
+
+    //--------------------------------------------------------------------------
+    // --- MMLU
+    creative_and_interpersonal -> mmlu_public_relations_chat_generative;
+    creative_and_interpersonal -> mmlu_management_chat_generative; 
+    //creative_and_interpersonal -> mmlu_marketing_chat_generative;
+    // --- MMLU-PRO
+    creative_and_interpersonal -> mmlu_pro-category_business; 
+    // --- BBH
+    creative_and_interpersonal -> bbh-split_12-movie_recommendation;
+    creative_and_interpersonal -> bbh-split_18-ruin_names; 
+      
+    //--------------------------------------------------------------------------   
+    
+    
+
+
+}

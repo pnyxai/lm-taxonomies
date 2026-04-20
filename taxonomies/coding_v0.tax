@@ -1,0 +1,13 @@
+// This taxonomy focuses on machine code generation and uderstanding
+
+coding_v0 {
+    root_c -> debugging;
+    debugging -> generation;
+    debugging -> understanding;
+}
+
+coding_v0_labeling {
+    debugging -> undefined_task1;
+    generation -> undefined_task2;
+    understanding -> reasoning_gym_007-codeio;
+}

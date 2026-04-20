@@ -1,0 +1,98 @@
+// This taxonomy focuses on math competences
+
+math_v0 {
+    root_c -> abstract_math;
+    root_c -> probability_and_statistics;
+
+    abstract_math -> proof_generation;
+    abstract_math -> calculus;
+
+    probability_and_statistics -> discrete_math;
+    probability_and_statistics -> calculus;
+    
+    proof_generation -> discrete_math;
+
+    discrete_math -> algebra;
+    calculus -> algebra;
+    
+    geometry -> arithmetic;
+
+    algebra -> arithmetic;
+}
+
+math_v0_labeling {
+    // ------------------- ARITHMETIC ------------------------------------------
+    // Addition, subtraction, multiplication, division
+    // Integer operations
+    // Fractions, decimals, and percentages
+    // Ratio and proportion
+    // Powers, roots, exponents
+    // -------------------------------------------------------------------------
+    arithmetic -> reasoning_gym_001-gsm_symbolic;
+    arithmetic -> reasoning_gym_003-complex_arithmetic;
+
+    // ------------------- ALGEBRA ---------------------------------------------
+    // Variables and expressions
+    // Simplifying expressions
+    // Solving linear equations and inequalities
+    // Understanding functions and mappings
+    // Polynomials and factoring
+    // Quadratic equations
+    // -------------------------------------------------------------------------
+    algebra -> reasoning_gym_002-polynomial_equations;
+
+    // ------------------- GEOMETRY --------------------------------------------
+    // Points, lines, planes, angles
+    // Triangles, quadrilaterals, polygons
+    // Circles and arcs
+    // Perimeter, area, volume
+    // Transformations (rotation, reflection, translation, scaling)
+    // Coordinate geometry
+    // -------------------------------------------------------------------------
+    geometry -> undefined_task1;
+
+    // ------------------- CALCULUS --------------------------------------------
+    // Differentiation (rates of change, tangent lines)
+    // Integration (area, accumulation)
+    // Multivariable calculus (gradients, divergence)
+    // Applications (optimization, motion, area under curves)
+    // -------------------------------------------------------------------------
+    calculus -> undefined_task2;
+
+    // ------------------- DISCRETE MATH ---------------------------------------
+    // Logic and set theory
+    // Counting and combinatorics
+    // Graph theory and networks
+    // Algorithms and recursion
+    // Boolean algebra
+    // -------------------------------------------------------------------------
+    discrete_math -> undefined_task3;
+
+    // ------------------- PROOF GENERATION ------------------------------------
+    // Logical statements and quantifiers
+    // Direct proofs and counterexamples
+    // Induction and contradiction
+    // Proof by contrapositive
+    // Set-theoretic and algebraic proofs
+    // -------------------------------------------------------------------------
+    proof_generation -> undefined_task4;
+
+    // ------------------- PROBABILITY AND STATISTICS --------------------------
+    // Probability axioms and combinatorics
+    // Random variables, distributions
+    // Descriptive statistics (mean, variance, quartiles)
+    // Inferential statistics (hypothesis testing, confidence intervals)
+    // Regression and correlation
+    // Bayesian reasoning
+    // -------------------------------------------------------------------------
+    probability_and_statistics -> reasoning_gym_006-dice;
+
+    // ------------------- ABSTRACT MATH ---------------------------------------
+    // Abstract algebra (groups, rings, fields)
+    // Real analysis (rigor in calculus)
+    // Topology (continuity, spaces)
+    // Number theory (divisibility, modular arithmetic)
+    // -------------------------------------------------------------------------
+    abstract_math -> undefined_task5;
+
+}

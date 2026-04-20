@@ -3,3 +3,5 @@
 untracked
 __pycache__
 .venv
+.ruff_cache
+dist
