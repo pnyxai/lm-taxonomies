@@ -1,4 +1,4 @@
-"""taxonomy_tools - Tools for working with LM taxonomies and model profiling."""
+"""lm_taxonomies - Tools for working with LM taxonomies and model profiling."""
 
 __version__ = "0.1.0"
 

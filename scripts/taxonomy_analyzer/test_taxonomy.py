@@ -13,8 +13,8 @@ sys.path.insert(0, os.path.join(root_dir, "packages", "python"))
 
 
 def main():
-    from taxonomy_tools import helm_data as txm_helm_data
-    from taxonomy_tools import utils as txm_utils
+    from lm_taxonomies import helm_data as txm_helm_data
+    from lm_taxonomies import utils as txm_utils
 
     # Create an ArgumentParser object
     parser = argparse.ArgumentParser(

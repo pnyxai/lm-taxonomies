@@ -11,14 +11,14 @@ Install the package with `uv`:
 uv sync
 ```
 
-This installs the `taxonomy_tools` package and all dependencies.
+This installs the `lm_taxonomies` package and all dependencies.
 
 ## Usage
 
 ### Import the Package
 
 ```python
-from taxonomy_tools import helm_data, metrics, utils
+from lm_taxonomies import helm_data, metrics, utils
 ```
 
 ### Available Modules
@@ -27,7 +27,7 @@ from taxonomy_tools import helm_data, metrics, utils
 - **metrics**: Calculation and analysis of taxonomy metrics
 - **utils**: Utility functions for taxonomy manipulation and analysis
 
-Configuration files are stored in `taxonomy_tools/config/`.
+Configuration files are stored in `lm_taxonomies/config/`.
 
 ## Scripts
 

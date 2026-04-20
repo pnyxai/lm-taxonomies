@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "taxonomy_tools"
+name = "lm_taxonomies"
 version = "0.1.0"
 description = "Tools for working with LM taxonomies and model profiling"
 readme = "README.md"
@@ -22,10 +22,10 @@ dependencies = [
 dev = ["ipykernel"]
 
 [tool.hatch.build.targets.wheel]
-packages = ["taxonomy_tools"]
+packages = ["lm_taxonomies"]
 
 [tool.hatch.build.targets.wheel.force-include]
-"taxonomy_tools/config" = "taxonomy_tools/config"
+"lm_taxonomies/config" = "lm_taxonomies/config"
 
 [tool.ruff]
-include = ["taxonomy_tools/**/*.py", "scripts/**/*.py"]
+include = ["lm_taxonomies/**/*.py", "scripts/**/*.py"]

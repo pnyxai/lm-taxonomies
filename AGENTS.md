@@ -1,12 +1,12 @@
-# taxonomy_tools Repository Guide for AI Agents
+# lm_taxonomies Repository Guide for AI Agents
 
-This document describes the structure and functionalities of the `taxonomy_tools` repository to help AI tools understand and navigate the codebase.
+This document describes the structure and functionalities of the `lm_taxonomies` repository to help AI tools understand and navigate the codebase.
 
 ## Repository Structure
 
 ```
 pnyx-lm-taxonomies/
-├── taxonomy_tools/          # Main Python package
+├── lm_taxonomies/          # Main Python package
 │   ├── __init__.py         # Package initialization
 │   ├── helm_data.py        # HELM benchmark data utilities
 │   ├── metrics.py          # Taxonomy metrics calculations
@@ -38,9 +38,9 @@ pnyx-lm-taxonomies/
 └── AGENTS.md              # This file
 ```
 
-## Package: taxonomy_tools
+## Package: lm_taxonomies
 
-The `taxonomy_tools` package provides core functionality for working with language model taxonomies and HELM benchmark data.
+The `lm_taxonomies` package provides core functionality for working with language model taxonomies and HELM benchmark data.
 
 ### Module: helm_data.py
 
@@ -201,7 +201,7 @@ See `taxonomies/README.md` for detailed format guide, concrete examples using th
 
 ## Scripts
 
-Standalone Python scripts that use the `taxonomy_tools` package.
+Standalone Python scripts that use the `lm_taxonomies` package.
 
 ### scripts/taxonomy_analyzer/
 

@@ -11,12 +11,8 @@ from . import metrics as txm_metrics
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 
-# This config file contains data for each of the models that HELM tested (and potentially more)
-models_config_path = os.environ.get(
-    "MODELS_CONFIG_PATH", os.path.join(current_dir, "config", "models.json")
-)
-with open(models_config_path) as f:
-    models_config = json.load(f)
+# Only initialized if needed
+models_config = None
 
 
 def load_taxonomy(
@@ -185,11 +181,29 @@ def get_taxonomy_datasets(taxonomy_graph: nx.classes.digraph.DiGraph) -> List:
     return datasets_list
 
 
+def inintialize_helm_data():
+    global models_config
+
+    if models_config is None:
+        print("Initializing data, please wait...")
+        # This config file contains data for each of the models that HELM tested (and potentially more)
+        models_config_path = os.environ.get(
+            "MODELS_CONFIG_PATH", os.path.join(current_dir, "config", "models.json")
+        )
+        with open(models_config_path) as f:
+            models_config = json.load(f)
+
+
 def filter_for_full_samples(samples_dict: dict, model_creator: str = "") -> dict:
     """
     Given a samples dictionary, containing datasets and the corresponding tested
     models, filters all models that were not tested on ALL the datasets.
     """
+    global models_config
+
+    # If not initialized
+    inintialize_helm_data()
+    
     # Keep only the models that were tested on all datasets
     included_dataset_count = dict()
     for dataset in samples_dict.keys():

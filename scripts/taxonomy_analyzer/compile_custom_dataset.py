@@ -8,7 +8,7 @@ import argparse
 
 
 def main():
-    from taxonomy_tools import helm_data as txm_helm_data
+    from lm_taxonomies import helm_data as txm_helm_data
 
     # Create an ArgumentParser object
     parser = argparse.ArgumentParser(
