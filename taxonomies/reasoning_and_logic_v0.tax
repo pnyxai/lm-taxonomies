@@ -27,7 +27,11 @@ reasoning_and_logic_v0 {
     // =========================================================================
     // ADVANCED REASONING BRANCHES
     // =========================================================================
-    
+
+    // --------(Theory of Mind) ----------
+    theory_of_mind -> object_tracking;
+    theory_of_mind -> sequential_reasoning;
+
     // --------(Advanced Logic Branch) ----------
     formal_logic_and_deduction -> foundational_logic;
     formal_logic_and_deduction -> ordering_and_relationships;
@@ -42,8 +46,7 @@ reasoning_and_logic_v0 {
     // =========================================================================
     // ROOT - Highest level integrating all branches
     // =========================================================================
-    root_c -> object_tracking;
-    root_c -> sequential_reasoning;
+    root_c -> theory_of_mind;
     root_c -> formal_logic_and_deduction;
     root_c -> algebraic_reasoning;
     root_c -> probabilistic_reasoning;
@@ -64,7 +67,16 @@ reasoning_and_logic_v0_labeling {
     immediate_order -> babisteps-chat_zero_shot-task_02-immediateorder;
     
     // =========================================================================
-    // BRANCH 1: OBJECT & SPATIAL REASONING
+    // BRANCH 1: Theory of Mind and Tracking
+    // =========================================================================
+
+    // --------(Theory of Mind) ----------
+    // Understanding beliefs, desires, intentions, and perspectives of others
+    theory_of_mind -> exploretom-chat-zero-shot-level-1;
+    theory_of_mind -> exploretom-chat-zero-shot-level-2;
+
+    // =========================================================================
+    // BRANCH 1.a: OBJECT & SPATIAL REASONING
     // =========================================================================
     
     // --------(Ordering and Relationships) ----------
@@ -77,6 +89,7 @@ reasoning_and_logic_v0_labeling {
     // Including tracking objects through permutations (shuffled objects)
     object_tracking -> babisteps-chat_zero_shot-task_03-complextracking;
     object_tracking -> babisteps-chat_zero_shot-task_04-listing;
+    object_tracking -> exploretom-chat-zero-shot-non_tom;
     //object_tracking -> bbh-split_15-object_counting;
     //object_tracking -> bbh-split_25-tracking_shuffled_objects_three_objects;
     //object_tracking -> bbh-split_23-tracking_shuffled_objects_five_objects;
@@ -84,7 +97,7 @@ reasoning_and_logic_v0_labeling {
     //object_tracking -> bbh-split_27-word_sorting;
     
     // =========================================================================
-    // BRANCH 2: TEMPORAL & SEQUENTIAL REASONING
+    // BRANCH 1.b: TEMPORAL & SEQUENTIAL REASONING
     // =========================================================================
     
     // --------(Temporal Reasoning) ----------
@@ -101,7 +114,7 @@ reasoning_and_logic_v0_labeling {
     //sequential_reasoning -> bbh-split_16-penguins_in_a_table;
     
     // =========================================================================
-    // BRANCH 3: LOGIC & FORMAL SYSTEMS
+    // BRANCH 2: LOGIC & FORMAL SYSTEMS
     // =========================================================================
     
     // --------(Foundational Logic) ----------
@@ -121,7 +134,7 @@ reasoning_and_logic_v0_labeling {
     //formal_logic_and_deduction -> mmlu_logical_fallacies_chat_generative;
     
     // =========================================================================
-    // BRANCH 4: MATHEMATICAL REASONING
+    // BRANCH 3: MATHEMATICAL REASONING
     // =========================================================================
     
     // --------(Arithmetic and Problem Solving) ----------
