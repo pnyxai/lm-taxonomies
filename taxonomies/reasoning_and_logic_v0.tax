@@ -89,7 +89,7 @@ reasoning_and_logic_v0_labeling {
     // Including tracking objects through permutations (shuffled objects)
     object_tracking -> babisteps-chat_zero_shot-task_03-complextracking;
     object_tracking -> babisteps-chat_zero_shot-task_04-listing;
-    object_tracking -> exploretom-chat-zero-shot-non_tom;
+    //object_tracking -> exploretom-chat-zero-shot-non_tom;
     //object_tracking -> bbh-split_15-object_counting;
     //object_tracking -> bbh-split_25-tracking_shuffled_objects_three_objects;
     //object_tracking -> bbh-split_23-tracking_shuffled_objects_five_objects;
