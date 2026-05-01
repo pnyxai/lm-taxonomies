@@ -85,13 +85,16 @@ tool_and_instruction_compliance_v0_labeling {
     // --------(Tool call formatting) ----------
     // Producing a correctly structured API call (right tool name + arguments in JSON)
     // given a task description and tool schema.
-    tool_call_formatting -> t-eval_pnyx_instruct-v2;
+    // tool_call_formatting -> t-eval_pnyx_instruct-v2;
+    tool_call_formatting -> t-eval_pnyx_instruct_tool_native-v2;
 
     // --------(Agentic tool reasoning) ----------
     // Full intermediate-step reasoning: plan a tool-calling sequence, reason about
     // context, retrieve the right tool, and understand its output.
     //agentic_tool_reasoning -> t-eval_pnyx_plan-json-v2;
-    agentic_tool_reasoning -> t-eval_pnyx_plan-reason-retrieve-understand-json-v2;
+    //agentic_tool_reasoning -> t-eval_pnyx_plan-tool_native-v2;
+    //agentic_tool_reasoning -> t-eval_pnyx_plan-reason-retrieve-understand-json-v2;
+    agentic_tool_reasoning -> t-eval_pnyx_plan-reason-retrieve-understand_tool_native-v2;
 
     // --------(Tool output verification) ----------
     // Reviewing a completed tool call to determine whether it met the objective.
