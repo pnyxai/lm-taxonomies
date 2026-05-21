@@ -1,0 +1,647 @@
+general_skills_v2 {
+
+    // =========================================================================
+    // FOUNDATIONAL BASE LAYER - Core reasoning capabilities
+    // =========================================================================
+    
+    // --------(Branch foundation A: Relationships and ordering) ----------
+    ordering_and_relationships -> immediate_order;
+    
+    // --------(Branch foundation B: Tracking) ----------
+    object_tracking -> simple_tracking;
+    object_tracking -> ordering_and_relationships;
+    
+    // --------(Branch foundation C: Temporal and sequences) ----------
+    temporal_reasoning -> immediate_order;
+    sequential_reasoning -> temporal_reasoning;
+    sequential_reasoning -> simple_tracking;
+    
+    // --------(Branch foundation D: Logic foundations) ----------
+    foundational_logic -> simple_tracking;
+    foundational_logic -> immediate_order;
+    
+    // =========================================================================
+    // ADVANCED REASONING BRANCHES
+    // =========================================================================
+
+    // --------(Theory of Mind) ----------
+    theory_of_mind -> object_tracking;
+    theory_of_mind -> sequential_reasoning;
+
+    // --------(Advanced Logic Branch) ----------
+    formal_logic_and_deduction -> foundational_logic;
+    formal_logic_and_deduction -> ordering_and_relationships;
+    
+    // --------(Math/Arithmetic Branch) ----------
+    arithmetic_and_problem_solving -> simple_tracking;
+    
+    algebraic_reasoning -> arithmetic_and_problem_solving;
+    
+    probabilistic_reasoning -> arithmetic_and_problem_solving;
+    
+
+
+
+    // =========================================================================
+    // FOUNDATIONAL BASE — shared across both branches
+    // =========================================================================
+
+    // --------(Shared foundation) ----------
+    // Ability to parse and internalize an explicit or implicit rule before acting.
+    // Everything above depends on this.
+    tool_call_formatting -> rule_parsing;
+
+    // =========================================================================
+    // BRANCH A: INSTRUCTION CONSTRAINT FOLLOWING
+    // Explicit textual constraints on model output (format, content, style).
+    // =========================================================================
+
+    // --------(Conversational constraint binding) ----------
+    // Retroactively applying a constraint introduced in a follow-up turn.
+    // Requires basic constraint following plus conversational context tracking.
+    conversational_constraint_binding -> rule_parsing;
+
+    // =========================================================================
+    // BRANCH B: TOOL USE COMPLIANCE
+    // Implicit rules defined by tool/API schemas and multi-step agent workflows.
+    // =========================================================================
+
+    // --------(Agentic tool reasoning) ----------
+    // Full agentic loop: plan → reason → retrieve → understand tool outputs.
+    // Builds on the ability to produce a correctly formatted tool call and
+    // the ability of following constraints.
+    agentic_tool_reasoning -> tool_call_formatting;
+    agentic_tool_reasoning -> conversational_constraint_binding;
+
+    // --------(Tool output verification) ----------
+    // Evaluating whether a completed tool call actually satisfied the objective.
+    // Requires understanding the tool call format to judge its correctness.
+    tool_output_verification -> tool_call_formatting;
+
+    // =========================================================================
+    // FOUNDATIONAL BASE LAYER - Core shared knowledge
+    // =========================================================================
+
+    // --------(Shared base: Biology and Chemistry) ----------
+    // Core life and matter sciences, prerequisite for both life and physical science branches
+    life_sciences -> biology_and_chemistry;
+    physical_sciences -> biology_and_chemistry;
+
+    // =========================================================================
+    // BRANCH A: LIFE SCIENCES
+    // =========================================================================
+
+    // --------(Life Sciences -> Clinical and Medical Knowledge) ----------
+    // Advanced applied biology and medicine builds on life sciences
+    clinical_and_medical_knowledge -> life_sciences;
+
+    // =========================================================================
+    // BRANCH B: PHYSICAL SCIENCES
+    // =========================================================================
+
+    // --------(Physics Fundamentals -> Physical Sciences) ----------
+    // Conceptual and formal physics/chemistry underpins physical sciences
+    physical_sciences -> physics_fundamentals;
+
+    // --------(Physical Sciences -> Applied Engineering) ----------
+    // Engineering and applied disciplines build on physical sciences
+    // and also require computing fundamentals
+    applied_engineering -> physical_sciences;
+    applied_engineering -> computing_fundamentals;
+
+    // =========================================================================
+    // BRANCH C: COMPUTING
+    // =========================================================================
+
+    // --------(Advanced Computing) ----------
+    // Machine learning, security, and advanced CS build on computing fundamentals
+    //advanced_computing -> computing_fundamentals;
+
+    // =========================================================================
+    // FOUNDATIONAL BASE LAYER - Core coding capabilities
+    // =========================================================================
+
+    // --------(Branch foundation: Code comprehension) ----------
+    // Ability to read, trace, and understand what code does
+    // Shared dependency across debugging, generation, and implementation
+    basic_generation -> code_comprehension;
+
+    // =========================================================================
+    // INTERMEDIATE LAYER
+    // =========================================================================
+
+    // --------(Branch A: Multi-language generation) ----------
+    // Generating correct code across multiple programming languages
+    // Depends on mastering basic generation in a primary language first
+    multilingual_generation -> basic_generation;
+
+    // --------(Branch B: Debugging) ----------
+    // Finding and fixing bugs in existing code
+    // Requires both generating correct code and understanding what code does
+    debugging -> basic_generation;
+    debugging -> code_comprehension;
+
+    // --------(Branch C: Applied implementation) ----------
+    // Using libraries, APIs, and frameworks; solving real-world coding problems
+    // Requires both generating correct code and reasoning about program behavior
+    implementation -> basic_generation;
+    implementation -> code_comprehension;
+
+
+    // =========================================================================
+    // FOUNDATIONAL BASE LAYER - Core shared skills
+    // =========================================================================
+
+    // --------(Shared base: Social Awareness) ----------
+    // Broad understanding of human society, behavior, and global context
+    // Prerequisite for civic, business, and social interaction branches
+    economic_reasoning -> social_awareness;
+    social_interaction -> social_awareness;
+
+    // --------(Shared base: Moral Foundations) ----------
+    // Core ethical and philosophical grounding, underpins ethics and law branches
+    applied_ethics -> moral_foundations;
+    legal_reasoning -> moral_foundations;
+
+    // =========================================================================
+    // BRANCH A: ETHICS & NORMATIVE REASONING
+    // =========================================================================
+
+    // --------(Applied Ethics -> Moral Foundations) ----------
+    // Applying ethical principles to real-world scenarios and disputes
+    // (defined in shared dependencies)
+
+    // =========================================================================
+    // BRANCH B: LAW & GOVERNANCE
+    // =========================================================================
+
+    // --------(Legal Reasoning -> Moral Foundations) ----------
+    // Understanding legal theory, jurisprudence, and professional law
+    // (defined in shared dependencies)
+
+    // --------(Professional Law and Governance -> Legal Reasoning + Social) ----------
+    // Advanced integrated knowledge of professional law and governance
+    professional_law_and_governance -> legal_reasoning;
+    professional_law_and_governance -> social_awareness;
+
+    // =========================================================================
+    // BRANCH C: BUSINESS & ECONOMICS
+    // =========================================================================
+
+    // --------(Economic Reasoning -> Social Awareness) ----------
+    // Quantitative and conceptual economics
+    // (defined in shared dependencies)
+
+    // --------(Business and Management -> Economic Reasoning) ----------
+    // Applied business, management, accounting, and marketing
+    business_and_management -> economic_reasoning;
+
+    // =========================================================================
+    // BRANCH D: SOCIAL INTERACTION & COMMUNICATION
+    // =========================================================================
+
+    // --------(Social Interaction -> Social Awareness) ----------
+    // Communication, public relations, and social/cultural understanding
+    // (defined in shared dependencies)
+
+    // --------(Social Sciences -> Social Interaction + World And Cultural Knowledge) ----------
+    // Economics, psychology foundations, and human behavior at scale
+    // Depending on history, geography, and social/cultural knowledge
+    social_sciences ->  social_interaction;
+    social_sciences -> world_and_cultural_knowledge;
+
+
+    // =========================================================================
+    // FUSION CONNECTIONS
+    // =========================================================================
+    agentic_tool_reasoning -> formal_logic_and_deduction;
+    debugging -> formal_logic_and_deduction;
+    legal_reasoning -> formal_logic_and_deduction;
+
+    clinical_and_medical_knowledge -> probabilistic_reasoning;
+    applied_engineering -> probabilistic_reasoning;
+    advanced_computing -> probabilistic_reasoning;
+    business_and_management -> probabilistic_reasoning;
+
+    applied_engineering -> algebraic_reasoning;
+    advanced_computing -> algebraic_reasoning;
+
+    applied_ethics -> theory_of_mind;
+    professional_law_and_governance -> theory_of_mind;
+    social_interaction -> theory_of_mind;
+
+    basic_generation -> arithmetic_and_problem_solving;
+    economic_reasoning -> arithmetic_and_problem_solving;
+
+    tool_call_formatting -> sequential_reasoning;
+    conversational_constraint_binding -> sequential_reasoning;
+
+    conversational_constraint_binding -> computing_fundamentals;
+    basic_generation -> advanced_computing;
+    
+
+
+    // =========================================================================
+    // ROOT - Highest level integrating all branches
+    // =========================================================================
+
+    
+    root_c -> agentic_tool_reasoning;
+    root_c -> tool_output_verification;
+    
+    root_c -> clinical_and_medical_knowledge;
+    root_c -> applied_engineering;
+    root_c -> advanced_computing;
+    
+    root_c -> multilingual_generation;
+    root_c -> debugging;
+    root_c -> implementation;
+    
+    root_c -> applied_ethics;
+    root_c -> professional_law_and_governance;
+    root_c -> business_and_management;
+    root_c -> social_sciences;
+
+}
+
+
+
+general_skills_v2_labeling {
+
+    // =========================================================================
+    // FOUNDATIONAL BASE LAYER
+    // =========================================================================
+    
+    // --------(Task 01: Simple Tracking) ----------
+    // Basic tracking and understanding of entities and their relationships
+    simple_tracking -> babisteps-chat_zero_shot-task_01-simpletracking;
+    
+    // --------(Task 02: Immediate Order) ----------
+    // Understanding direct orderings and immediate relationships
+    immediate_order -> babisteps-chat_zero_shot-task_02-immediateorder;
+    
+    // =========================================================================
+    // BRANCH 1: Theory of Mind and Tracking
+    // =========================================================================
+
+    // --------(Theory of Mind) ----------
+    // Understanding beliefs, desires, intentions, and perspectives of others
+    theory_of_mind -> exploretom-chat-zero-shot-level-1;
+    theory_of_mind -> exploretom-chat-zero-shot-level-2;
+
+    // =========================================================================
+    // BRANCH 1.a: OBJECT & SPATIAL REASONING
+    // =========================================================================
+    
+    // --------(Ordering and Relationships) ----------
+    // Size, spatial, and relational ordering
+    ordering_and_relationships -> babisteps-chat_zero_shot-task_05-sizeorder;
+    ordering_and_relationships -> babisteps-chat_zero_shot-task_06-spatialorder;
+    
+    // --------(Object Tracking) ----------
+    // Complex tracking, counting, and managing multiple objects
+    // Including tracking objects through permutations (shuffled objects)
+    object_tracking -> babisteps-chat_zero_shot-task_03-complextracking;
+    object_tracking -> babisteps-chat_zero_shot-task_04-listing;
+    object_tracking -> exploretom-chat-zero-shot-non_tom;
+    object_tracking -> bbh-split_15-object_counting;
+    object_tracking -> bbh-split_25-tracking_shuffled_objects_three_objects;
+    object_tracking -> bbh-split_23-tracking_shuffled_objects_five_objects;
+    object_tracking -> bbh-split_24-tracking_shuffled_objects_seven_objects;
+    object_tracking -> bbh-split_27-word_sorting;
+    
+    // =========================================================================
+    // BRANCH 1.b: TEMPORAL & SEQUENTIAL REASONING
+    // =========================================================================
+    
+    // --------(Temporal Reasoning) ----------
+    // Understanding temporal order and date understanding
+    temporal_reasoning -> babisteps-chat_zero_shot-task_07-temporalorder;
+    temporal_reasoning -> bbh-split_03-date_understanding;
+    
+    // --------(Sequential Reasoning) ----------
+    // Path finding, temporal tracking, and sequential logic
+    sequential_reasoning -> babisteps-chat_zero_shot-task_08-pathfinding;
+    sequential_reasoning -> babisteps-chat_zero_shot-task_09-temporaltracking;
+    sequential_reasoning -> bbh-split_22-temporal_sequences;
+    sequential_reasoning -> bbh-split_14-navigate;
+    sequential_reasoning -> bbh-split_16-penguins_in_a_table;
+    
+    // =========================================================================
+    // BRANCH 2: LOGIC & FORMAL SYSTEMS
+    // =========================================================================
+    
+    // --------(Foundational Logic) ----------
+    // Basic logic, Boolean expressions, and relational reasoning
+    foundational_logic -> bbh-split_01-boolean_expressions;
+    foundational_logic -> bbh-split_02-causal_judgement;
+    foundational_logic -> bbh-split_05-dyck_languages;
+    foundational_logic -> bbh-split_17-reasoning_about_colored_objects;
+    
+    // --------(Formal Logic and Deduction) ----------
+    // Formal fallacies, logical deduction, and advanced logical reasoning
+    formal_logic_and_deduction -> bbh-split_06-formal_fallacies;
+    formal_logic_and_deduction -> bbh-split_09-logical_deduction_five_objects;
+    formal_logic_and_deduction -> bbh-split_10-logical_deduction_seven_objects;
+    formal_logic_and_deduction -> bbh-split_11-logical_deduction_three_objects;
+    formal_logic_and_deduction -> mmlu_formal_logic_chat_generative;
+    formal_logic_and_deduction -> mmlu_logical_fallacies_chat_generative;
+    
+    // =========================================================================
+    // BRANCH 3: MATHEMATICAL REASONING
+    // =========================================================================
+    
+    // --------(Arithmetic and Problem Solving) ----------
+    // Basic arithmetic, word problems, and computational reasoning
+    arithmetic_and_problem_solving -> bbh-split_13-multistep_arithmetic_two;
+    arithmetic_and_problem_solving -> gsm8k_chat;
+    arithmetic_and_problem_solving -> mmlu_elementary_mathematics_chat_generative;
+    arithmetic_and_problem_solving -> mmlu_high_school_mathematics_chat_generative;
+    arithmetic_and_problem_solving -> reasoning_gym_001-gsm_symbolic;
+    arithmetic_and_problem_solving -> reasoning_gym_003-complex_arithmetic;
+    
+    // --------(Algebraic Reasoning) ----------
+    // Variables, equations, polynomials, and algebraic problem solving
+    algebraic_reasoning -> mmlu_college_mathematics_chat_generative;
+    algebraic_reasoning -> mmlu_abstract_algebra_chat_generative;
+    algebraic_reasoning -> reasoning_gym_002-polynomial_equations;
+    algebraic_reasoning -> mmlu_pro-category_math;
+    
+    // --------(Probabilistic Reasoning) ----------
+    // Probability, statistics, and uncertainty reasoning
+    probabilistic_reasoning -> mmlu_high_school_statistics_chat_generative;
+    probabilistic_reasoning -> reasoning_gym_006-dice; 
+
+
+
+    // =========================================================================
+    // FOUNDATIONAL BASE
+    // =========================================================================
+
+    // --------(Rule parsing) ----------
+    // Understanding what an explicit or implicit rule requires.
+    // Measured by basic single-turn instruction following with known constraints.
+    rule_parsing -> ifbench;
+    rule_parsing -> ifeval;
+    rule_parsing -> ifbench_ifeval-constraints_single-turn;
+    rule_parsing -> ifbench_ifbench-constraints_single-turn;
+
+    // =========================================================================
+    // BRANCH A: INSTRUCTION CONSTRAINT FOLLOWING
+    // =========================================================================  
+
+    // --------(Conversational constraint binding) ----------
+    // Producing output that correctly satisfies a stated constraint and
+    // applying a constraint that arrives in a follow-up conversational turn.
+    conversational_constraint_binding -> ifbench_ifeval-constraints_multi-turn;
+    conversational_constraint_binding -> ifbench_ifbench-constraints_multi-turn;
+
+    // =========================================================================
+    // BRANCH B: TOOL USE COMPLIANCE
+    // =========================================================================
+
+    // --------(Tool call formatting) ----------
+    // Producing a correctly structured API call (right tool name + arguments in JSON)
+    // given a task description and tool schema.
+    tool_call_formatting -> t-eval_pnyx_instruct-v2;
+    tool_call_formatting -> t-eval_pnyx_instruct_tool_native-v2;
+
+    // --------(Agentic tool reasoning) ----------
+    // Full intermediate-step reasoning: plan a tool-calling sequence, reason about
+    // context, retrieve the right tool, and understand its output.
+    agentic_tool_reasoning -> t-eval_pnyx_plan-json-v2;
+    agentic_tool_reasoning -> t-eval_pnyx_plan-tool_native-v2;
+    agentic_tool_reasoning -> t-eval_pnyx_plan-reason-retrieve-understand-json-v2;
+    agentic_tool_reasoning -> t-eval_pnyx_plan-reason-retrieve-understand_tool_native-v2;
+
+    // --------(Tool output verification) ----------
+    // Reviewing a completed tool call to determine whether it met the objective.
+    tool_output_verification -> t-eval_pnyx_review-str-v2;
+
+    // =========================================================================
+    // FOUNDATIONAL BASE LAYER
+    // =========================================================================   
+
+    // --------(Biology and Chemistry) ----------
+    // Foundational concepts in life science and matter/chemical composition
+    biology_and_chemistry -> mmlu_high_school_biology_chat_generative;
+    biology_and_chemistry -> mmlu_high_school_chemistry_chat_generative;
+    biology_and_chemistry -> mmlu_college_biology_chat_generative;
+    biology_and_chemistry -> mmlu_college_chemistry_chat_generative;
+    biology_and_chemistry -> mmlu_pro-category_chemistry;
+    biology_and_chemistry -> mmlu_pro-category_biology;
+
+    // --------(Physics Fundamentals) ----------
+    // Conceptual and formal physics principles
+    physics_fundamentals -> mmlu_pro-category_physics;
+    physics_fundamentals -> mmlu_high_school_physics_chat_generative;
+    physics_fundamentals -> mmlu_conceptual_physics_chat_generative;
+    physics_fundamentals -> mmlu_college_physics_chat_generative;
+    physics_fundamentals -> mmlu_astronomy_chat_generative;
+
+    // --------(Computing Fundamentals) ----------
+    // Core computer science concepts and programming
+    computing_fundamentals -> mmlu_high_school_computer_science_chat_generative;
+    computing_fundamentals -> mmlu_college_computer_science_chat_generative;
+
+    // =========================================================================
+    // BRANCH A: LIFE SCIENCES
+    // =========================================================================
+
+    // --------(Life Sciences) ----------
+    // Virology, nutrition, aging, and integrated biological sciences
+    life_sciences -> mmlu_virology_chat_generative;
+    life_sciences -> mmlu_nutrition_chat_generative;
+    life_sciences -> mmlu_human_aging_chat_generative;
+    life_sciences -> mmlu_medical_genetics_chat_generative;
+    life_sciences -> gpqa_subtask_main_biology;
+
+    // --------(Clinical and Medical Knowledge) ----------
+    // Applied clinical, professional, and college-level medical knowledge
+    clinical_and_medical_knowledge -> mmlu_clinical_knowledge_chat_generative;
+    clinical_and_medical_knowledge -> mmlu_professional_medicine_chat_generative;
+    clinical_and_medical_knowledge -> mmlu_college_medicine_chat_generative;
+    clinical_and_medical_knowledge -> mmlu_anatomy_chat_generative;
+    clinical_and_medical_knowledge -> mmlu_pro-category_health;
+
+    // =========================================================================
+    // BRANCH B: PHYSICAL SCIENCES
+    // =========================================================================
+
+    // --------(Physical Sciences) ----------
+    // Advanced physics and chemistry, including graduate-level topics
+    physical_sciences -> gpqa_subtask_main_physics;
+    physical_sciences -> gpqa_subtask_main_chemistry;
+
+    // --------(Applied Engineering) ----------
+    // Electrical engineering and applied computer engineering
+    applied_engineering -> mmlu_electrical_engineering_chat_generative;
+    applied_engineering -> mmlu_pro-category_engineering;
+
+
+    // =========================================================================
+    // BRANCH C: COMPUTING
+    // =========================================================================
+
+    // --------(Advanced Computing) ----------
+    // Machine learning, computer security, and advanced CS topics
+    advanced_computing -> mmlu_machine_learning_chat_generative;
+    advanced_computing -> mmlu_computer_security_chat_generative;
+    advanced_computing -> mmlu_pro-category_computer-science;
+
+
+    // =========================================================================
+    // FOUNDATIONAL BASE LAYER
+    // =========================================================================
+
+    // --------(Code Comprehension) ----------
+    // Tracing execution, understanding input/output behavior of programs
+    code_comprehension -> reasoning_gym_007-codeio;
+
+    // --------(Basic Generation) ----------
+    // Generating correct Python functions from natural language descriptions
+    basic_generation -> humaneval_chat_instruct;
+    basic_generation -> humaneval_chat_instruct_plus;
+    basic_generation -> mbpp_sandbox_chat_instruct;
+    basic_generation -> mbpp_sandbox_chat_instruct_plus;
+
+    // =========================================================================
+    // BRANCH A: MULTI-LANGUAGE GENERATION
+    // =========================================================================
+
+    // --------(Multilingual Generation) ----------
+    // Translating problem descriptions into code across diverse languages
+    // (C++, Go, Java, JavaScript/Node, Rust) using both HumanEval and MBPP tasks
+    multilingual_generation -> multipl-e_humaneval_cpp_chat_instruct;
+    multilingual_generation -> multipl-e_humaneval_go_chat_instruct;
+    multilingual_generation -> multipl-e_humaneval_java_chat_instruct;
+    multilingual_generation -> multipl-e_humaneval_node_chat_instruct;
+    multilingual_generation -> multipl-e_humaneval_rust_chat_instruct;
+    multilingual_generation -> multipl-e_mbpp_cpp_chat_instruct;
+    multilingual_generation -> multipl-e_mbpp_go_chat_instruct;
+    multilingual_generation -> multipl-e_mbpp_java_chat_instruct;
+    multilingual_generation -> multipl-e_mbpp_node_chat_instruct;
+    multilingual_generation -> multipl-e_mbpp_rust_chat_instruct;
+
+    // =========================================================================
+    // BRANCH B: DEBUGGING
+    // =========================================================================
+
+    // --------(Debugging) ----------
+    // Identifying and correcting bugs in Python code across difficulty levels
+    debugging -> debugbench_python_easy_sandbox_chat;
+    debugging -> debugbench_python_medium_sandbox_chat;
+    debugging -> debugbench_python_hard_sandbox_chat;
+
+    // =========================================================================
+    // BRANCH C: APPLIED IMPLEMENTATION
+    // =========================================================================
+
+    // --------(Implementation) ----------
+    // Using scientific/ML libraries (NumPy, Pandas, PyTorch, SciPy, scikit-learn,
+    // TensorFlow) and solving competitive/interview programming problems
+    implementation -> ds1000_numpy_sandbox_chat;
+    implementation -> ds1000_pandas_sandbox_chat;
+    implementation -> ds1000_pytorch_sandbox_chat;
+    implementation -> ds1000_scipy_sandbox_chat;
+    implementation -> ds1000_sklearn_sandbox_chat;
+    implementation -> ds1000_tensorflow_sandbox_chat;
+    implementation -> apps_introductory_sandbox_chat_instruct;
+    implementation -> apps_interview_sandbox_chat_instruct;
+    implementation -> apps_competition_sandbox_chat_instruct;
+
+
+
+    // =========================================================================
+    // FOUNDATIONAL BASE LAYER
+    // =========================================================================
+
+    // --------(Social Awareness) ----------
+    // Understanding of human society, behavior, demographics, and global context
+    social_awareness -> mmlu_sociology_chat_generative;
+    social_awareness -> mmlu_human_sexuality_chat_generative;
+    social_awareness -> mmlu_global_facts_chat_generative;
+
+    // --------(World and Cultural Knowledge) ----------
+    // History, geography, and global cultural understanding
+    // Broad miscellaneous world knowledge and general facts
+    world_and_cultural_knowledge -> mmlu_high_school_geography_chat_generative;
+    world_and_cultural_knowledge -> mmlu_prehistory_chat_generative;
+    world_and_cultural_knowledge -> mmlu_high_school_world_history_chat_generative;
+    world_and_cultural_knowledge -> mmlu_high_school_european_history_chat_generative;
+    world_and_cultural_knowledge -> mmlu_high_school_us_history_chat_generative;
+    world_and_cultural_knowledge -> mmlu_pro-category_history;
+    world_and_cultural_knowledge -> mmlu_miscellaneous_chat_generative;
+    world_and_cultural_knowledge -> mmlu_pro-category_other;
+    world_and_cultural_knowledge -> bbh-split_21-sports_understanding;
+
+
+    // --------(Moral Foundations) ----------
+    // Core philosophical and religious frameworks that underpin ethics and law
+    moral_foundations -> mmlu_philosophy_chat_generative;
+    moral_foundations -> mmlu_world_religions_chat_generative;
+    moral_foundations -> mmlu_pro-category_philosophy;
+
+    // =========================================================================
+    // BRANCH A: ETHICS & NORMATIVE REASONING
+    // =========================================================================
+
+    // --------(Applied Ethics) ----------
+    // Applying ethical reasoning to moral disputes, scenarios, and business contexts
+    applied_ethics -> mmlu_moral_disputes_chat_generative;
+    applied_ethics -> mmlu_moral_scenarios_chat_generative;
+    applied_ethics -> mmlu_business_ethics_chat_generative;
+
+    // =========================================================================
+    // BRANCH B: LAW & GOVERNANCE
+    // =========================================================================
+
+    // --------(Legal Reasoning) ----------
+    // Legal theory, jurisprudence, and foundational principles of law
+    legal_reasoning -> mmlu_jurisprudence_chat_generative;
+    legal_reasoning -> mmlu_pro-category_law;
+
+    // --------(Professional Law and Governance) ----------
+    // Government systems, political institutions, and foreign policy
+    // Advanced professional law practice and governance systems
+    professional_law_and_governance -> mmlu_high_school_government_and_politics_chat_generative;
+    professional_law_and_governance -> mmlu_us_foreign_policy_chat_generative;
+    professional_law_and_governance -> mmlu_professional_law_chat_generative;
+    professional_law_and_governance -> mmlu_international_law_chat_generative;
+
+    // =========================================================================
+    // BRANCH C: BUSINESS & ECONOMICS
+    // =========================================================================
+
+    // --------(Economic Reasoning) ----------
+    // Quantitative and conceptual economic analysis
+    economic_reasoning -> mmlu_econometrics_chat_generative;
+    economic_reasoning -> mmlu_pro-category_economics;
+    economic_reasoning -> mmlu_high_school_microeconomics_chat_generative;
+    economic_reasoning -> mmlu_high_school_macroeconomics_chat_generative;
+
+    // --------(Business and Management) ----------
+    // Applied business knowledge: management, accounting, and marketing
+    business_and_management -> mmlu_professional_accounting_chat_generative;
+    business_and_management -> mmlu_management_chat_generative;
+    business_and_management -> mmlu_marketing_chat_generative;
+    business_and_management -> mmlu_pro-category_business;
+
+    // =========================================================================
+    // BRANCH D: SOCIAL INTERACTION & COMMUNICATION
+    // =========================================================================
+    // =========================================================================
+
+    // --------(Social Interaction) ----------
+    // Communication, public relations, cultural preferences, and social dynamics
+    social_interaction -> mmlu_public_relations_chat_generative;
+    social_interaction -> bbh-split_12-movie_recommendation;
+    social_interaction -> bbh-split_18-ruin_names;
+
+
+    // --------(Social Sciences) ----------
+    // Psychology foundations, and human behavior at scale
+    social_sciences -> mmlu_high_school_psychology_chat_generative;
+    social_sciences -> mmlu_pro-category_psychology;
+    
+}
