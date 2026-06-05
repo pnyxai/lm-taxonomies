@@ -64,9 +64,20 @@ def load_taxonomy(
                 graphs_dict[graph_name].add_edge(from_n, to_n)
 
     # Check taxonomy file in correct order and naming convention
-    assert len(graphs_dict.keys()) == 2
+    assert len(graphs_dict.keys()) == 2 or len(graphs_dict.keys()) == 3
     taxonomy_name = list(graphs_dict.keys())[0]
     assert taxonomy_name + "_labeling" == list(graphs_dict.keys())[1]
+
+    # Add descriptions to nodes if available
+    descriptions_graph_name = taxonomy_name + "_descriptions"
+    if descriptions_graph_name in graphs_dict:
+        descriptions_dict = dict()
+        for edge in graphs_dict[descriptions_graph_name].edges:
+            desc = edge[1]
+            if desc.startswith('"') and desc.endswith('"'):
+                desc = desc[1:-1]
+            descriptions_dict[edge[0]] = desc
+        nx.set_node_attributes(graphs_dict[taxonomy_name], descriptions_dict, name="description")
 
     # Add datasets to nodes in the taxonomy graph using the labels graph
     dataset_correspondency = dict()
@@ -160,6 +171,18 @@ def get_taxonomy_datasets_per_node(taxonomy_graph: nx.classes.digraph.DiGraph) -
         if datasets is not None:
             dataset_correspondency[node] = datasets
     return dataset_correspondency
+
+
+def get_taxonomy_description(taxonomy_graph: nx.classes.digraph.DiGraph) -> dict:
+    """
+    Returns the dictionary mapping each node to its description.
+    """
+    description_correspondency = dict()
+    for node in taxonomy_graph.nodes:
+        desc = taxonomy_graph.nodes[node].get("description", None)
+        if desc is not None:
+            description_correspondency[node] = desc
+    return description_correspondency
 
 
 def get_taxonomy_datasets(taxonomy_graph: nx.classes.digraph.DiGraph) -> List:

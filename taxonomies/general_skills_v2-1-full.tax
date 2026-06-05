@@ -645,3 +645,48 @@ general_skills_v2_labeling {
     social_sciences -> mmlu_pro-category_psychology;
     
 }
+
+general_skills_v2_descriptions {
+
+    simple_tracking -> "Basic tracking and understanding of entities and their relationships";
+    immediate_order -> "Understanding direct orderings and immediate relationships";
+    theory_of_mind -> "Understanding beliefs, desires, intentions, and perspectives of others";
+    ordering_and_relationships -> "Size, spatial, and relational ordering";
+    object_tracking -> "Complex tracking, counting, and managing multiple objects. Including tracking objects through permutations (shuffled objects)";
+    temporal_reasoning -> "Understanding temporal order and date understanding";
+    sequential_reasoning -> "Path finding, temporal tracking, and sequential logic";
+    foundational_logic -> "Basic logic, Boolean expressions, and relational reasoning";
+    formal_logic_and_deduction -> "Formal fallacies, logical deduction, and advanced logical reasoning";
+    arithmetic_and_problem_solving -> "Basic arithmetic, word problems, and computational reasoning";
+    algebraic_reasoning -> "Variables, equations, polynomials, and algebraic problem solving";
+    probabilistic_reasoning -> "Probability, statistics, and uncertainty reasoning";
+    rule_parsing -> "Understanding what an explicit or implicit rule requires. Measured by basic single-turn instruction following with known constraints.";
+    conversational_constraint_binding -> "Producing output that correctly satisfies a stated constraint and applying a constraint that arrives in a follow-up conversational turn.";
+    tool_call_formatting -> "Producing a correctly structured API call (right tool name + arguments in JSON) given a task description and tool schema.";
+    agentic_tool_reasoning -> "Full intermediate-step reasoning: plan a tool-calling sequence, reason about context, retrieve the right tool, and understand its output.";
+    tool_output_verification -> "Reviewing a completed tool call to determine whether it met the objective.";
+    biology_and_chemistry -> "Foundational concepts in life science and matter/chemical composition";
+    physics_fundamentals -> "Conceptual and formal physics principles";
+    computing_fundamentals -> "Core computer science concepts and programming";
+    life_sciences -> "Virology, nutrition, aging, and integrated biological sciences";
+    clinical_and_medical_knowledge -> "Applied clinical, professional, and college-level medical knowledge";
+    physical_sciences -> "Advanced physics and chemistry, including graduate-level topics";
+    applied_engineering -> "Electrical engineering and applied computer engineering";
+    advanced_computing -> "Machine learning, computer security, and advanced CS topics";
+    code_comprehension -> "Tracing execution, understanding input/output behavior of programs";
+    basic_generation -> "Generating correct Python functions from natural language descriptions";
+    multilingual_generation -> "Translating problem descriptions into code across diverse languages (C++, Go, Java, JavaScript/Node, Rust)";
+    debugging -> "Identifying and correcting bugs in Python code across difficulty levels";
+    implementation -> "Using scientific/ML libraries (NumPy, Pandas, PyTorch, SciPy, scikit-learn, TensorFlow) and solving competitive/interview programming problems";
+    social_awareness -> "Understanding of human society, behavior, demographics, and global context";
+    world_and_cultural_knowledge -> "History, geography, and global cultural understanding. Broad miscellaneous world knowledge and general facts";
+    moral_foundations -> "Core philosophical and religious frameworks that underpin ethics and law";
+    applied_ethics -> "Applying ethical reasoning to moral disputes, scenarios, and business contexts";
+    legal_reasoning -> "Legal theory, jurisprudence, and foundational principles of law";
+    professional_law_and_governance -> "Government systems, political institutions, and foreign policy. Advanced professional law practice and governance systems";
+    economic_reasoning -> "Quantitative and conceptual economic analysis";
+    business_and_management -> "Applied business knowledge: management, accounting, and marketing";
+    social_interaction -> "Communication, public relations, cultural preferences, and social dynamics";
+    social_sciences -> "Psychology foundations, and human behavior at scale";
+
+}
