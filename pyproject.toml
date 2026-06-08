@@ -19,7 +19,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = ["ipykernel"]
+dev = ["ipykernel", "pytest"]
 
 [tool.hatch.build.targets.wheel]
 packages = ["lm_taxonomies"]
@@ -32,3 +32,8 @@ lm_taxonomies = ["lm_taxonomies/config/*.json"]
 
 [tool.ruff]
 include = ["lm_taxonomies/**/*.py", "scripts/**/*.py"]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.3",
+]

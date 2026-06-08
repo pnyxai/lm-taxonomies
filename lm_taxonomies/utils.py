@@ -11,6 +11,17 @@ current_dir = os.path.dirname(os.path.abspath(__file__))
 # Only initialized if needed
 models_config = None
 
+NODE_DESCRIPTION_TEMPLATE = """SKILL: {name}
+
+DESCRIPTION:
+{description}
+
+REQUIRES:
+{requires}
+
+ENABLES:
+{enables}"""
+
 
 def load_taxonomy(
     file_path: str,
@@ -403,3 +414,107 @@ def get_model_graph(taxonomy_graph, samples_dict, target_model):
     nx.set_node_attributes(model_graph, attributes, "scores")
 
     return model_graph
+
+
+def get_taxonomy_node_prompt_blocks(
+    taxonomy_graph: nx.classes.digraph.DiGraph,
+    replace_underscores: bool = False,
+) -> dict:
+    """
+    Returns a dict mapping node name to its formatted prompt block string
+    (excluding root_c). Each block follows the NODE_DESCRIPTION_TEMPLATE
+    with SKILL, DESCRIPTION, REQUIRES, and ENABLES sections.
+
+    Parameters
+    ----------
+    taxonomy_graph : nx.DiGraph
+        The taxonomy graph.
+    replace_underscores : bool
+        If True, replaces underscores with spaces in node names for a
+        more natural display.
+    """
+    descriptions = get_taxonomy_description(taxonomy_graph)
+
+    node_map = {}
+    for node in taxonomy_graph.nodes:
+        if node == "root_c":
+            continue
+
+        name = node.replace("_", " ") if replace_underscores else node
+        description = descriptions.get(node, "")
+
+        requires = [p for p in taxonomy_graph.predecessors(node) if p != "root_c"]
+        requires_str = "\n".join(f"- {p}" for p in requires) if requires else ""
+
+        enables = list(taxonomy_graph.successors(node))
+        # If the only "child" is root_c, leave enables empty
+        if len(enables) == 1 and "root_c" in enables:
+            enables_str = ""
+        else:
+            enables_str = "\n".join(f"- {s}" for s in enables) if enables else ""
+
+        block = NODE_DESCRIPTION_TEMPLATE.format(
+            name=name,
+            description=description,
+            requires=requires_str,
+            enables=enables_str,
+        )
+        node_map[node] = block
+
+    return node_map
+
+
+def get_taxonomy_hierarchy_prompt_blocks(
+    taxonomy_graph: nx.classes.digraph.DiGraph,
+    direction: str = "bottom-up",
+    replace_underscores: bool = False,
+) -> str:
+    """
+    Returns all node prompt blocks concatenated in hierarchical order,
+    separated by '---'.
+
+    Parameters
+    ----------
+    taxonomy_graph : nx.DiGraph
+        The taxonomy graph.
+    direction : str
+        "bottom-up" sorts by depth descending (leaves/base nodes first).
+        "top-down" sorts by depth ascending (root-adjacent nodes first).
+    replace_underscores : bool
+        If True, replaces underscores with spaces in node names.
+
+    Returns
+    -------
+    str
+        All prompt blocks concatenated.
+    """
+    node_map = get_taxonomy_node_prompt_blocks(taxonomy_graph, replace_underscores)
+
+    # Compute depth for each node in topological order
+    # Depth = longest path from a base node (no predecessors)
+    depths = {}
+    for node in nx.topological_sort(taxonomy_graph):
+        if node == "root_c":
+            continue
+        if node not in node_map:
+            continue
+        predecessors = list(taxonomy_graph.predecessors(node))
+        if not predecessors:
+            depths[node] = 0
+        else:
+            max_pred_depth = max(depths.get(p, 0) for p in predecessors)
+            depths[node] = max_pred_depth + 1
+
+    # Sort nodes by depth
+    # Top-down = advanced first (ascending depth: 0, 1, 2, ...)
+    # Bottom-up = basic first (descending depth: ..., 2, 1, 0)
+    reverse = direction == "bottom-up"
+    sorted_nodes = sorted(
+        [n for n in depths if n in node_map],
+        key=lambda n: depths[n],
+        reverse=reverse,
+    )
+
+    # Concatenate blocks in sorted order
+    ordered_blocks = [node_map[n] for n in sorted_nodes]
+    return "\n---\n".join(ordered_blocks)

@@ -33,6 +33,8 @@ pnyx-lm-taxonomies/
 │   ├── pnyx_categories_v2.tax
 │   ├── pnyx_leaderboard_v3.tax
 │   └── README.md           # Taxonomy format guide with examples
+├── tests/                  # Test suite
+│   └── test_taxonomy_prompt.py  # Tests for prompt block functions
 ├── pyproject.toml          # Project configuration (uv managed)
 ├── README.md               # User-facing documentation
 └── AGENTS.md              # This file
@@ -130,6 +132,24 @@ Core utilities for taxonomy manipulation, analysis, and evaluation.
 - `get_model_graph(taxonomy_graph, samples_dict, target_model) -> nx.DiGraph`
   - Generates graph for specific model performance
   - Useful for model-specific analysis
+
+- `get_taxonomy_node_prompt_blocks(taxonomy_graph: nx.DiGraph, replace_underscores: bool = False) -> dict`
+  - Returns a dict mapping node name to its formatted prompt block string (excluding `root_c`)
+  - Each block follows `NODE_DESCRIPTION_TEMPLATE` with SKILL, DESCRIPTION, REQUIRES, and ENABLES sections
+  - REQUIRES: immediate predecessor nodes (advanced dependencies, excluding `root_c`)
+  - ENABLES: immediate successor nodes (basic skills); empty if only child is `root_c`
+  - `replace_underscores=True` replaces `_` with spaces in node names for more natural display
+
+- `get_taxonomy_hierarchy_prompt_blocks(taxonomy_graph: nx.DiGraph, direction: str = "bottom-up", replace_underscores: bool = False) -> str`
+  - Returns all node prompt blocks concatenated in hierarchical order, separated by `\n---\n`
+  - `direction="top-down"`: advanced nodes first (ascending depth, root-adjacent first)
+  - `direction="bottom-up"`: basic nodes first (descending depth, leaves first)
+  - Uses longest-path depth from base nodes for correct topological ordering
+  - Supports `replace_underscores` flag for spaced node names
+
+- `NODE_DESCRIPTION_TEMPLATE`
+  - Module-level constant defining the string template for node prompt blocks
+  - Placeholders: `{name}`, `{description}`, `{requires}`, `{enables}`
 
 **Dataset Handling:**
 - Loads from `config/models.json`: Model metadata required for filtering and categorization
