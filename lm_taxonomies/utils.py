@@ -443,15 +443,19 @@ def get_taxonomy_node_prompt_blocks(
         name = node.replace("_", " ") if replace_underscores else node
         description = descriptions.get(node, "")
 
-        requires = [p for p in taxonomy_graph.predecessors(node) if p != "root_c"]
-        requires_str = "\n".join(f"- {p}" for p in requires) if requires else ""
-
-        enables = list(taxonomy_graph.successors(node))
-        # If the only "child" is root_c, leave enables empty
-        if len(enables) == 1 and "root_c" in enables:
-            enables_str = ""
+        requires = list(taxonomy_graph.successors(node))
+        # If the only "child" is root_c, leave requires empty
+        if len(requires) == 1 and "root_c" in requires:
+            requires_str = ""
         else:
-            enables_str = "\n".join(f"- {s}" for s in enables) if enables else ""
+            if replace_underscores:
+                requires = [e.replace("_", " ") for e in requires]
+            requires_str = "\n".join(f"- {s}" for s in requires) if requires else ""
+
+        enable = [p for p in taxonomy_graph.predecessors(node) if p != "root_c"]
+        if replace_underscores:
+            enable = [r.replace("_", " ") for r in enable]
+        enables_str = "\n".join(f"- {p}" for p in enable) if enable else ""
 
         block = NODE_DESCRIPTION_TEMPLATE.format(
             name=name,
