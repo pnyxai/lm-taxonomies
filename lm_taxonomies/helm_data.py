@@ -10,9 +10,6 @@ import platform
 is_windows = platform.system() == "Windows"
 
 
-current_dir = os.path.dirname(os.path.abspath(__file__))
-
-
 # This structure contains the translation of the taxonomy dataset strings
 # into actual HELM dataset results.
 # An entry in this dictionary does not need to be exactly one dataset, nor be
@@ -32,18 +29,17 @@ current_dir = os.path.dirname(os.path.abspath(__file__))
 #     ],
 #
 # The data will be read upon importing from the default path or the path indicated in an environment variable
-helm_tests_config_path = os.environ.get(
-    "HELM_TESTS_CONFIG_PATH", os.path.join(current_dir, "config", "helm_tests.json")
-)
-with open(helm_tests_config_path) as f:
-    dataset_config = json.load(f)
 
-# This config file contains data for each of the models that HELM tested (and potentially more)
-models_config_path = os.environ.get(
-    "MODELS_CONFIG_PATH", os.path.join(current_dir, "config", "models.json")
-)
-with open(models_config_path) as f:
-    models_config = json.load(f)
+def _get_dataset_config():
+    from lm_taxonomies.config import load_config
+
+    return load_config("helm_tests.json", "HELM_TESTS_CONFIG_PATH")
+
+
+def _get_models_config():
+    from lm_taxonomies.config import load_config
+
+    return load_config("models.json", "MODELS_CONFIG_PATH")
 
 
 def get_model_name_from_test_name(test_name):
@@ -81,7 +77,7 @@ def read_helm_data(
             continue
 
         # Get list of associated tasks
-        task_list = dataset_config.get(dataset, None)
+        task_list = _get_dataset_config().get(dataset, None)
         if task_list is None:
             print(print_prefix + "Dataset not defined in config : %s" % dataset)
             continue
@@ -148,11 +144,10 @@ def read_helm_data(
                 tested_models_use = list()
                 for model in tested_models:
                     # Get model config
-                    this_cfg = models_config.get(model, None)
+                    this_cfg = _get_models_config().get(model, None)
                     if this_cfg is None:
                         raise ValueError(
-                            "Cannot find config data for model %s in config file %s"
-                            % (model, models_config)
+                            "Cannot find config data for model %s" % (model)
                         )
                     # Check if within the given parameter and append
                     if (this_cfg["parameters"] > parameters_range[0]) and (

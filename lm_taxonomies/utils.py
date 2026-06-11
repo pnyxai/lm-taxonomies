@@ -3,10 +3,6 @@ import networkx as nx
 import numpy as np
 import pandas as pd
 from typing import List
-import os
-import json
-
-current_dir = os.path.dirname(os.path.abspath(__file__))
 
 # Only initialized if needed
 models_config = None
@@ -88,7 +84,9 @@ def load_taxonomy(
             if desc.startswith('"') and desc.endswith('"'):
                 desc = desc[1:-1]
             descriptions_dict[edge[0]] = desc
-        nx.set_node_attributes(graphs_dict[taxonomy_name], descriptions_dict, name="description")
+        nx.set_node_attributes(
+            graphs_dict[taxonomy_name], descriptions_dict, name="description"
+        )
 
     # Add datasets to nodes in the taxonomy graph using the labels graph
     dataset_correspondency = dict()
@@ -212,17 +210,14 @@ def get_taxonomy_datasets(taxonomy_graph: nx.classes.digraph.DiGraph) -> List:
     return datasets_list
 
 
-def inintialize_helm_data():
+def initialize_helm_data():
     global models_config
 
     if models_config is None:
         print("Initializing data, please wait...")
-        # This config file contains data for each of the models that HELM tested (and potentially more)
-        models_config_path = os.environ.get(
-            "MODELS_CONFIG_PATH", os.path.join(current_dir, "config", "models.json")
-        )
-        with open(models_config_path) as f:
-            models_config = json.load(f)
+        from lm_taxonomies.config import load_config
+
+        models_config = load_config("models.json", "MODELS_CONFIG_PATH")
 
 
 def filter_for_full_samples(samples_dict: dict, model_creator: str = "") -> dict:
@@ -233,7 +228,7 @@ def filter_for_full_samples(samples_dict: dict, model_creator: str = "") -> dict
     global models_config
 
     # If not initialized
-    inintialize_helm_data()
+    initialize_helm_data()
 
     # Keep only the models that were tested on all datasets
     included_dataset_count = dict()

@@ -174,7 +174,7 @@ def main():
 
         # Get the unbalanced metrics, using all possible models in each edge
         metric_matrix_imbalanced, metric_dict_imbalanced = (
-            txm_utils.get_taxonomy_per_edge_metric(
+            txm_metrics.get_taxonomy_per_edge_metric(
                 taxonomy_graph,
                 helm_samples_dict,
                 method=metric,
