@@ -152,18 +152,12 @@ pnyx_categories_v2_labeling {
     //tool_and_instruction_compliance -> ifbench_ifeval-constraints_single-turn;
     //tool_and_instruction_compliance -> ifbench_ifeval-constraints_multi-turn;
     // --- T-EVAL
-    tool_and_instruction_compliance -> t-eval_pnyx_instruct-v2;
+    tool_and_instruction_compliance -> t-eval_pnyx_instruct_tool_native-v2;
+    //tool_and_instruction_compliance -> t-eval_pnyx_instruct-v2;
     //tool_and_instruction_compliance -> t-eval_pnyx_plan-json-v2;
-    tool_and_instruction_compliance -> t-eval_pnyx_plan-reason-retrieve-understand-json-v2;
+    tool_and_instruction_compliance -> t-eval_pnyx_plan-reason-retrieve-understand_tool_native-v2;
+    //tool_and_instruction_compliance -> t-eval_pnyx_plan-reason-retrieve-understand-json-v2;
     tool_and_instruction_compliance -> t-eval_pnyx_review-str-v2;
-
-    // --- BBH
-    interpretation_and_communication -> bbh-split_04-disambiguation_qa;
-    interpretation_and_communication -> bbh-split_08-hyperbaton;
-    interpretation_and_communication -> bbh-split_19-salient_translation_error_detection;
-    interpretation_and_communication -> bbh-split_20-snarks;
-    // interpretation_and_communication -> bbh-split_26-web_of_lies; 
-      
     //--------------------------------------------------------------------------   
 
 
